@@ -1,9 +1,19 @@
 const express = require('express');
-// const router = require('./Routes/Routes');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const { productRouter } = require('./Routes/routes');
+dotenv.config();
 const app = express(); // initialize express app
 
 app.use(express.json()); // parse requests of content-type - application/json
-// app.use('/api', router); 
+
+app.use(cors()); // enable cors
+app.use(bodyParser.json()); // parse requests of content-type - application/json
+app.use(bodyParser.urlencoded({ extended: true })); // parse requests of content-type - application/x-www-form-urlencoded
+
+app.use('/api/products', productRouter);
+
 app.use((err, req, res, next) => {
     res.json({
         error: err.message

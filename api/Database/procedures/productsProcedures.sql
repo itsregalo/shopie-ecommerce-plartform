@@ -18,8 +18,8 @@ BEGIN
 END;
 GO
 
--- procedures to get all products by id
-CREATE OR ALTER PROCEDURE get_all_products_by_id
+-- procedures to get product by id
+CREATE OR ALTER PROCEDURE get_product_by_id
     @product_id VARCHAR(255)
 AS
 BEGIN
@@ -36,8 +36,46 @@ BEGIN
 END;
 GO
 
+-- procedure to create a category
+CREATE OR ALTER PROCEDURE create_category
+    @id VARCHAR(255),
+    @category_name VARCHAR(255)
+AS
+BEGIN
+    INSERT INTO product_category (id, category_name)
+    VALUES (@id, @category_name);
+END;
+GO
+
+-- procedure to get all categories
+CREATE OR ALTER PROCEDURE get_all_categories
+AS
+BEGIN
+    SELECT * FROM product_category;
+END;
+GO
+
+-- procedure to get category by id
+CREATE OR ALTER PROCEDURE get_category_by_id
+    @category_id VARCHAR(255)
+AS
+BEGIN
+    SELECT * FROM product_category WHERE id = @category_id;
+END;
+GO
+
+-- procedure to get category by name
+CREATE OR ALTER PROCEDURE get_category_by_name
+    @category_name VARCHAR(255)
+AS
+BEGIN
+    SELECT * FROM product_category WHERE category_name = @category_name;
+END;
+GO
+
 -- add product
 CREATE OR ALTER PROCEDURE add_product
+    @id VARCHAR(255),
     @product_name VARCHAR(255),
     @product_description VARCHAR(255),
     @product_category_id VARCHAR(255),
@@ -47,14 +85,14 @@ CREATE OR ALTER PROCEDURE add_product
     @product_stock INT
 AS
 BEGIN
-    INSERT INTO product (product_name, product_description, product_category_id, product_initial_price, product_price, product_image, product_stock)
-    VALUES (@product_name, @product_description, @product_category_id, @product_initial_price, @product_price, @product_image, @product_stock);
+    INSERT INTO product (id, product_name, product_description, product_category_id, product_initial_price, product_price, product_image, product_stock)
+    VALUES (@id, @product_name, @product_description, @product_category_id, @product_initial_price, @product_price, @product_image, @product_stock);
 END;
 GO
 
 -- update product
 CREATE OR ALTER PROCEDURE update_product
-    @product_id VARCHAR(255),
+    @id VARCHAR(255),
     @product_name VARCHAR(255),
     @product_description VARCHAR(255),
     @product_category_id VARCHAR(255),
@@ -66,7 +104,7 @@ AS
 BEGIN
     UPDATE product
     SET product_name = @product_name, product_description = @product_description, product_category_id = @product_category_id, product_initial_price = @product_initial_price, product_price = @product_price, product_image = @product_image, product_stock = @product_stock
-    WHERE id = @product_id;
+    WHERE id = @id;
 END;
 GO  
 

@@ -127,3 +127,23 @@ BEGIN
     INSERT INTO cart_item (cart_id, product_id, product_quantity)
     VALUES (@cart_id, @product_id, @product_quantity);
 END;
+GO  
+
+-- get all products in cart
+CREATE OR ALTER PROCEDURE get_all_products_in_cart
+    @cart_id VARCHAR(255)
+AS
+BEGIN
+    SELECT * FROM cart_item WHERE cart_id = @cart_id;
+END;
+GO
+
+-- get product in cart by id
+CREATE OR ALTER PROCEDURE get_product_in_cart_by_id
+    @cart_id VARCHAR(255),
+    @product_id VARCHAR(255)
+AS
+BEGIN
+    SELECT * FROM cart_item WHERE cart_id = @cart_id AND product_id = @product_id;
+END;
+

@@ -2,11 +2,22 @@ USE shopie_ecommerce;
 GO
 
 CREATE OR ALTER PROCEDURE createNewAdminPROC(
-    @first_name VARCHAR(255), @last_name VARCHAR(255), @email VARCHAR(255), @password VARCHAR(MAX))
+    @id VARCHAR(255),
+    @first_name VARCHAR(255), 
+    @last_name VARCHAR(255), 
+    @email VARCHAR(255), 
+    @password VARCHAR(MAX))
 AS
 BEGIN
-    INSERT INTO  users(first_name, last_name, email, password,  is_admin)
-    VALUES(@first_name, @last_name, @email, @password, 1, 1)
+    INSERT INTO  users(
+        id, first_name, last_name,
+         email, password,  is_admin)
+    VALUES(
+        @id, 
+        @first_name, 
+        @last_name, 
+        @email, 
+        @password, 1)
 END
 GO
 

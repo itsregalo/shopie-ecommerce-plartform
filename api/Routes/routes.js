@@ -2,7 +2,8 @@ const {Router} = require('express');
 const { 
     getAllProducts, getProductById, createNewCategory, 
     getAllCategories, createNewProduct, updateProduct, 
-    deleteProduct } = require('../Controllers/productsController');
+    deleteProduct, 
+    add_to_cart} = require('../Controllers/productsController');
 const { customeregister, login, adminregister } = require('../Controllers/Auth.controller');
 const productRouter = Router();
 
@@ -23,6 +24,8 @@ productRouter.delete('/:id', deleteProduct);
 // categories
 productRouter.post('/category', createNewCategory)
 productRouter.get('/category/all', getAllCategories)
+
+productRouter.post('/add-to-cart', add_to_cart)
 
 module.exports = {
     productRouter

@@ -218,6 +218,46 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+const add_to_cart = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { 
+            cart_id, product_id, product_quantity
+        } = req.body
+
+        const pool = await mssql.connect(sqlConfig)
+
+        // checking if product exists
+        const productExists = await pool.request()
+                .input('product_id', mssql.VarChar, product_id)
+                .execute('get_product_by_id')
+
+        if (!productExists.recordset[0]) {
+            return res.status(404).json({
+                error: 'Product not found'
+            })
+        }
+
+        const cart = await pool.request()
+                .input('cart_id', mssql.VarChar, cart_id)
+                .input('product_id', mssql.VarChar, product_id)
+                .input('product_quantity', mssql.Int, product_quantity)
+                .execute('add_to_cart')
+
+        res.status(200).json({
+            message: 'Product added to cart successfully',
+        })
+    }
+        
+        catch (error) {
+            res.status(500).json({
+                error: error.message
+            })
+        }
+}
+
+
+
 module.exports = {
     getAllProducts,
     getProductById,
@@ -225,5 +265,6 @@ module.exports = {
     createNewProduct,
     getAllCategories,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    add_to_cart
 }

@@ -4,9 +4,9 @@ Content-Type: application/json
 
 {
     "id" : 1,
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "jonn@gmail.com",
+    "firstName": "Jenna",
+    "lastName": "Doney",
+    "email": "jenna@gmail.com",
     "password" : "12345678"
 }
 

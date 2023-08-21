@@ -37,7 +37,7 @@ body{
     margin-top: 20px;
 }
 .forgotpwd-logo img, .signup-logo img, .login-logo img{
-    width: 50%;
+    width: 10%;
     height: 50%;
     object-fit: contain;
 }
@@ -148,7 +148,6 @@ body{
     display: flex;
     flex-direction: column;
     background-color: #4790FC;
-    gap: 20px;
     color: #fff;
     /* bring th content to the center of the container */
     align-items: center;
@@ -214,4 +213,114 @@ body{
 .forgotpwd-details form a:hover{
     text-decoration: underline;
     color: #ccc;
+}
+.forgotpwd-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-top: -40px;
+}
+
+
+/* header */
+nav{
+    display: flex;
+    flex-direction: column;
+    margin: 25px 25px;
+    gap: 40px;
+}
+.upper-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.nav-logo img{
+    width: 20%;
+    height: 100%;
+    object-fit: contain;
+}
+.upper-nav-left{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.upper-nav-left a{
+    text-decoration: none;
+    color: #4790FC ;
+    font-size: 14px;
+    font-weight: 600;
+}
+.upper-nav-left a:hover{
+    color: #a30306;
+}
+.nav-acc{
+   align-items: center;
+    display: flex;
+}
+.lower-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lower-nav ul{
+    display: flex;
+   gap: 100px;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    list-style: none;
+    font-size: 18px;
+    font-weight: 540;
+    color: #000;
+}
+.lower-nav ul a{
+    text-decoration: none;
+    color: #000;
+}
+.lower-nav ul a:hover{
+    color: #4790FC;
+}
+.lower-nav-left{
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.custom-input input{
+    width: 80vh;
+    height: 30px;
+    border: 1px solid #4790FC  ;
+    outline: none;
+    font-size: 16px;
+    background-color: #fff;
+    padding-left: 10px;
+}
+.custom-input {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .custom-input img {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  
+  .custom-input input[type="search"] {
+    padding-right: 30px; /* Provide space for the image */
+  }
+.nav-cart{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.nav-cart img{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }

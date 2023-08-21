@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       } else {
         axios.post(
-          'http://127.0.0.1:8005/api/v1/login', 
+          'http://127.0.0.1:8005/users/login', 
           {
             email: email.value.trim(),
             password: password.value.trim()

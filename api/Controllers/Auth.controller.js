@@ -30,7 +30,7 @@ const customeregister = async (req, res) => {
         .input('password', mssql.VarChar, hashedPwd)
         .execute('createNewUserPROC')
         if(result.rowsAffected == 1){
-            const token = createToken(email, 0)
+            const token = createToken({email, is_admin: 0})
             return res.status(201).json({message: 'Account created successfully', token, user: {firstName, lastName, email, is_admin: 0}})
 
         } else {

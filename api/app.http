@@ -1,8 +1,9 @@
 ### USER REGISTRATION
-POST http://localhost:8005/register
+POST http://localhost:8005/users/register
 Content-Type: application/json
 
 {
+    "id" : 1,
     "firstName": "John",
     "lastName": "Doe",
     "email": "jonn@gmail.com",
@@ -10,7 +11,7 @@ Content-Type: application/json
 }
 
 ### LOGIN
-POST http://localhost:8005/login
+POST http://localhost:8005/users/login
 Content-Type: application/json
 
 {

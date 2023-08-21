@@ -7,14 +7,14 @@ body{
     background-color: #f5f5f5;
 }
 
-/* login Page */
-.login-container{
+/* login Page  and signup page*/
+.signup-container, .login-container{
     width: 100%;
     height: 100vh;
     display: flex;
 }
 
-.login-left{
+.signup-right, .login-left{
     width: 55%;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@ body{
    padding-left: 70px;
    padding-top: 50px;
 }
-.login-right{
+.signup-left, .login-right{
     width:45%;
     height: 100%;
     display: flex;
@@ -31,17 +31,17 @@ body{
     align-items: center;
     background-color: #f5f5f5;
 }
-.login-logo{
+.forgotpwd-logo,.signup-logo,.login-logo{
     width: 50%;
     height: 10%;
     margin-top: 20px;
 }
-.login-logo img{
+.forgotpwd-logo img, .signup-logo img, .login-logo img{
     width: 50%;
     height: 50%;
     object-fit: contain;
 }
-.login-details{
+.signup-details, .login-details{
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -50,12 +50,12 @@ body{
 
    
 }
-.login-left form{
+.signup-right form, .login-left form{
     display: flex;
     flex-direction: column;
     gap: 50px
 }
-.login-left form input{
+.signup-right form input, .login-left form input{
     width: 60%;
     height: 30px;
     border: 1px solid #ccc;
@@ -67,7 +67,7 @@ body{
     background-color: #f4f4f8;
     
 }
-.login-left form button{
+.signup-right form button, .login-left form button{
     width: 15%;
     height: 30px;
     border: none;
@@ -78,41 +78,41 @@ body{
     cursor: pointer;
     margin-left: 25%;
 }
-.login-left form button:hover{
+.signup-rigth form button:hover, .login-left form button:hover{
     background-color: rgb(7, 94, 194);
 }
-.login-left form a{
+.signup-right form a, .login-left form a{
     text-decoration: underline;
     color: #ED2326;
     font-size: 14px;
-    margin-left: 26%;
+    margin-left: 28%;
     margin-top: -20px;
 }
-.login-left form a:hover{
+.signup-right form a:hover, .login-left form a:hover{
     text-decoration: underline;
     color: #a30306;
 }
-.login-left h1{
+.signup-right h1, .login-left h1{
     font-size: 44px;
     font-weight: 900;
 }
 
-.login-right{
+.signup-left, .login-right{
     background-color: #4790FC;
     color: #fff;
     gap: 40px;
 }
-.login-right h1{
+.signup-left, .login-right h1{
     font-size: 40px;
     font-weight: 900;
 }
-.login-right p{
+.signup-left p, .login-right p{
     font-size: 18px;
     font-weight: 500;
     padding-left: 130px;
     padding-right: 100px;
 }
-.login-right a{
+.signup-left a, .login-right a{
     width: 20%;
     height: 25px;
     border: none;
@@ -126,6 +126,92 @@ body{
     padding: auto 0;
     line-height: 25px;
 }
-.login-right a:hover{
+.signup-left a:hover, .login-right a:hover{
     background-color: #a30306;
+}
+
+/* forgot password page */
+.forgotpwd-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    /* bring the container to the center of the page */
+    align-items: center;
+    padding-top: 70px;
+    gap: 100px;
+}
+.forgotpwd-innercontainer{
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    background-color: #4790FC;
+    gap: 20px;
+    color: #fff;
+    /* bring th content to the center of the container */
+    align-items: center;
+    border-radius: 10px;
+}
+.forgotpwd-details{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+.forgotpwd-details h1{
+    font-size: 50px;
+    font-weight: 900;
+}
+.forgotpwd-details p{
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.forgotpwd-details form{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 70%;
+}
+.forgotpwd-details form input{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    outline: none;
+    font-size: 16px;
+    background-color: #f4f4f8;
+    padding-left: 10px;
+}
+.forgotpwd-details form button{
+    width: 30%;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ED2326;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 35%;
+}
+.forgotpwd-details form button:hover{
+    background-color: #a30306;
+}
+.forgotpwd-details form a{
+    text-decoration: underline;
+    color: #fff;
+    font-size: 14px;
+    align-self: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.forgotpwd-details form a:hover{
+    text-decoration: underline;
+    color: #ccc;
 }

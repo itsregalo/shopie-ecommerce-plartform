@@ -1,15 +1,15 @@
-USE  shopieEcommercePlatform;
-GO
+USE  shopie_ecommerce;
 
-DROP TABLE IF EXISTS usersTable;
+-- users
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE usersTable(
-    id INT IDENTITY(1, 1) PRIMARY KEY,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(MAX) NOT NULL,
-    is_verified BIT DEFAULT 0,
-    is_admin BIT DEFAULT 0
-);
-
+CREATE TABLE users (
+    id VARCHAR(255) PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    is_admin BIT DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)

@@ -1,9 +1,11 @@
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-const cors = require('cors');
 const { productRouter } = require('./Routes/routes');
+
+const dotenv = require('dotenv');
 dotenv.config();
+
 const app = express(); // initialize express app
 
 app.use(express.json()); // parse requests of content-type - application/json
@@ -13,6 +15,7 @@ app.use(bodyParser.json()); // parse requests of content-type - application/json
 app.use(bodyParser.urlencoded({ extended: true })); // parse requests of content-type - application/x-www-form-urlencoded
 
 app.use('/api/products', productRouter);
+app.use('/users', productRouter);
 
 app.use((err, req, res, next) => {
     res.json({
@@ -20,10 +23,19 @@ app.use((err, req, res, next) => {
         })
     })
 
-
 // define a port
 app.listen(8005, () => {
     console.log('Server is listening on port 8005');
 });
 
 // base route: http://localhost:8005/api
+
+
+
+
+
+
+
+
+
+

@@ -13,95 +13,103 @@ body{
     height: 100vh;
     display: flex;
 }
-
 .login-left{
     width: 55%;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-   padding-left: 70px;
-   padding-top: 50px;
-}
-.login-right{
-    width:45%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
+    background-color: #fff;
 }
 .login-logo{
-    width: 50%;
-    height: 10%;
-    margin-top: 20px;
-}
+    padding-top: 40px;
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+ }
 .login-logo img{
     width: 50%;
     height: 50%;
     object-fit: contain;
 }
+.login-logo a{
+    text-decoration: none;
+    color: #4790FC ;
+    font-size: 18px;
+    font-weight: 600;
+}
+.login-logo a:hover{
+    color: #a30306;
+}
 .login-details{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 80px;
-    gap: 50px;
-
-   
+    margin-top: 140px;
+    gap: 40px;
+    padding-left: 70px;
 }
-.login-left form{
+.login-details h1{
+    font-size: 44px;
+    font-weight: 900;
+    margin-top: -40px;
+}
+.login-details form{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 50px
+    gap: 40px;
+    margin-left: 40px;
 }
-.login-left form input{
-    width: 60%;
+.login-details form input{
+    width: 70%;
     height: 30px;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding-left: 10px;
     outline: none;
     font-size: 16px;
-    margin-left: 40px;
-    background-color: #f4f4f8;
-    
+    background-color: #f4f4f8; 
+    justify-content: center; 
+  margin-left: 20px;
 }
-.login-left form button{
+.login-details form button{
     width: 15%;
     height: 30px;
     border: none;
     border-radius: 10px;
     background-color: #4790FC;
     color: #fff;
-    font-size: 16px;
+    font-size: 13px;
     cursor: pointer;
-    margin-left: 40%;
+    margin-left: 30%;
 }
-.login-left form button:hover{
-    background-color: rgb(7, 94, 194);
+.login-details form button:hover{
+    background-color: #2461bd;
 }
-.login-left form a{
-    text-decoration: underline;
-    color: #ED2326;
+.login-details a{
+    text-decoration: none;
+    color: #ED2326 ;
     font-size: 14px;
+    font-weight: 600;
+    margin-left: 210px;
 }
-.login-left form a:hover{
-    text-decoration: underline;
+.login-details a:hover{
     color: #a30306;
 }
-.login-left h1{
-    font-size: 44px;
-    font-weight: 900;
-}
-
 .login-right{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #4790FC;
-    color: #fff;
-    gap: 40px;
+    color:#fff;
+    gap: 30px;
 }
 .login-right h1{
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 900;
 }
 .login-right p{
@@ -135,106 +143,102 @@ body{
     height: 100vh;
     display: flex;
 }
-
-.signup-right{
-    width: 55%;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-   padding-left: 70px;
-   padding-top: 50px;
-}
-.signup-left{
-    width:45%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-}
 .signup-logo{
-    width: 50%;
-    height: 10%;
-    margin-top: 20px;
+    padding-top: 40px;
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.signup-logo a{
+    text-decoration: none;
+    color: #4790FC ;
+    font-size: 18px;
+    font-weight: 600;
+}
+.signup-logo a:hover{
+    color: #a30306;
 }
 .signup-logo img{
     width: 50%;
     height: 50%;
     object-fit: contain;
 }
-.signup-details{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 80px;
-    gap: 50px;
 
-   
-}
-.signup-right form{
+.signup-right{
+    width: 55%;
     display: flex;
     flex-direction: column;
-    gap: 50px
+   padding-left: 40px;
+   background-color: #fff;
 }
-.signup-right form input{
-    width: 60%;
+.signup-details{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    gap: 40px;
+    padding-left: 50px;
+}
+.signup-details h1{
+    font-size: 44px;
+    font-weight: 900;
+    margin-top: -40px;
+}
+#registerForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+#registerForm input{
+    width: 70%;
     height: 30px;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding-left: 10px;
     outline: none;
     font-size: 16px;
-    margin-left: 40px;
-    background-color: #f4f4f8;
-    
+    background-color: #f4f4f8; 
+    justify-content: center; 
+  margin-left: 20px;
 }
-.signup-right form button, .login-left form button{
+#registerForm button{
     width: 15%;
     height: 30px;
     border: none;
     border-radius: 10px;
-    background-color: #4790FC;
+    background-color: #ED2326;
     color: #fff;
-    font-size: 16px;
+    font-size: 13px;
     cursor: pointer;
-    margin-left: 25%;
+    margin-left: 30%;
 }
-.signup-rigth form button:hover, .login-left form button:hover{
-    background-color: rgb(7, 94, 194);
+#registerForm button:hover{
+    background-color: #990306;
 }
-.signup-right form a, .login-left form a{
-    text-decoration: underline;
-    color: #ED2326;
-    font-size: 14px;
-    margin-left: 28%;
-    margin-top: -20px;
-}
-.signup-right form a:hover, .login-left form a:hover{
-    text-decoration: underline;
-    color: #a30306;
-}
-.signup-right h1, .login-left h1{
-    font-size: 44px;
-    font-weight: 900;
-}
-
-.signup-left, .login-right{
+.signup-left{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #4790FC;
-    color: #fff;
-    gap: 40px;
+    color:#fff;
+    gap: 30px;
 }
-.signup-left, .login-right h1{
-    font-size: 40px;
+.signup-left h1{
+    font-size: 50px;
     font-weight: 900;
 }
-.signup-left p, .login-right p{
+.signup-left p{
     font-size: 18px;
     font-weight: 500;
     padding-left: 130px;
     padding-right: 100px;
 }
-.signup-left a, .login-right a{
+.signup-left a{
     width: 20%;
     height: 25px;
     border: none;
@@ -248,71 +252,80 @@ body{
     padding: auto 0;
     line-height: 25px;
 }
-.signup-left a:hover, .login-right a:hover{
+.signup-left a:hover{
     background-color: #a30306;
 }
-
-
 /* forgot password page */
 .forgotpwd-container{
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
 }
 .forgotpwd-logo{
-    width: 50%;
-    height: 10%;
-    margin-top: 20px;
+    padding-top: 40px;
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.forgotpwd-logo a{
+    text-decoration: none;
+    color: #4790FC ;
+    font-size: 18px;
+    font-weight: 600;
+}
+.forgotpwd-logo a:hover{
+    color: #a30306;
 }
 .forgotpwd-logo img{
-    width: 50%;
+    width: 30%;
     height: 50%;
     object-fit: contain;
 }
 .forgotpwd-innercontainer{
-    width: 55%;
+    width: 50%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     background-color: #4790FC;
-   padding-left: 70px;
-   padding-top: 50px;
+    color:#fff;
+    margin: auto;
+    padding-left: 30px;
 }
 .forgotpwd-image{
+    width: 30%;
+    height: 30%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0 auto;
     margin-top: -50px;
-}
-.forgotpwd-image img{
-    object-fit: contain;
-    margin-top: -100px;
 }
 .forgotpwd-details{
     display: flex;
     flex-direction: column;
     gap: 30px;
-    align-items: center;;
-    color: #fff;
+    padding-left: 50px;
 }
 .forgotpwd-details h1{
-    font-size: 40px;
+    font-size: 45px;
     font-weight: 900;
+    margin-top: 70px;
 }
 .forgotpwd-details p{
     font-size: 18px;
     font-weight: 500;
-    padding-left: 130px;
+    padding-left: 40px;
     padding-right: 100px;
 }
 #forgotPwdForm{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    margin-left: 40px;
+    gap: 40px;
 }
 #forgotPwdForm input{
-    width: 60%;
+    width: 70%;
     height: 30px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -321,9 +334,10 @@ body{
     font-size: 16px;
     background-color: #f4f4f8; 
     justify-content: center; 
+  margin-left: 20px;
 }
 #forgotPwdForm button{
-    width: 55%;
+    width: 18%;
     height: 30px;
     border: none;
     border-radius: 10px;
@@ -331,8 +345,22 @@ body{
     color: #fff;
     font-size: 13px;
     cursor: pointer;
-    margin-left: 20%;
+    margin-left: 30%;
 }
+#forgotPwdForm button:hover{
+    background-color: #990306;
+}
+.forgotpwd-details a{
+    text-decoration: underline;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 200px;
+}
+.forgotpwd-details a:hover{
+    color: #a30306;
+}
+
 
 /* header */
 nav{

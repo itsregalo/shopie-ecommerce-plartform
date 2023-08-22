@@ -14,9 +14,6 @@ productRouter.post('/login', login);
 productRouter.post('/adminregister', adminregister);
 productRouter.post('/forgot-password', forgotPassword);
 
-
-
-
 // products
 productRouter.get('/', getAllProducts);
 productRouter.post('/', createNewProduct);

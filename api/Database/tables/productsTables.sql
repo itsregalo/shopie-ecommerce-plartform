@@ -22,7 +22,7 @@ BEGIN TRY
         product_name VARCHAR(255) NOT NULL,
         product_description VARCHAR(255) NOT NULL,
         product_category_id VARCHAR(255) NOT NULL,
-        product_initial_price INT NOT NULL,
+        product_initial_price INT,
         product_price INT NOT NULL,
         product_image VARCHAR(255) NOT NULL,
         product_stock INT NOT NULL,

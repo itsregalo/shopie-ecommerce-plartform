@@ -20,7 +20,7 @@ app.use('/users', productRouter);
 app.use((err, req, res, next) => {
     res.json({
         error: err.message
-        })
+        }) 
     })
 
 // define a port

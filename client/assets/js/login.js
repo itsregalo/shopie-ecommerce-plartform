@@ -1,58 +1,83 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('form');
-    
-    form.addEventListener('submit', function(event) {
+  const form = document.getElementById('form');
+  const emailInput = document.querySelector('input[type="text"]');
+  const passwordInput = document.querySelector('input[type="password"]');
+  const loginErrorMessage = document.getElementById('loginErrorMessage');
+  const loginSuccessMessage = document.getElementById('loginSuccessMessage');
+
+  form.addEventListener('submit', async function(event) {
       event.preventDefault();
-      
-      const email = form.querySelector('input[type="text"]');
-      const password = form.querySelector('input[type="password"]');
-      
+
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
       // Checking the error message
       function showError(message) {
-        const errorElement = document.getElementById('loginErrorMessage');
-        errorElement.innerText = message;
+          loginErrorMessage.textContent = message;
+          loginSuccessMessage.textContent = '';
       }
-      
+
       // Removing the error message
       function removeError() {
-        const errorElement = document.getElementById('loginErrorMessage');
-        errorElement.innerText = '';
+          loginErrorMessage.textContent = '';
+          loginSuccessMessage.textContent = '';
       }
-      
-      // Checking if all fields are filled
-      if (email.value.trim() === '' || password.value.trim() === '') {
-        showError('Please fill in all fields');
-        return;
-      } else {
-        axios.post(
-          'http://127.0.0.1:8005/users/login', 
-          {
-            email: email.value.trim(),
-            password: password.value.trim()
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-          .then((result) => {
-            removeError();
-            localStorage.setItem('token', result.data.token);
-            localStorage.setItem('user', JSON.stringify(result.data.user));
-            const successElement = document.getElementById('loginSuccessMessage');
-            successElement.innerText = result.data.message;
-            const redirectUrl = result.data.user.is_admin == 0 ? '../employee/html/dashboard.html' : '../dashboard/dashboard.html';
-            window.location.href = redirectUrl;
-          })
-          .catch((e) => {
-            console.log(e);
-            if (e?.message) {
-              showError('Oops! You entered wrong credentials');
-            } else if (e?.response.data.error) {
-              showError(e.response.data.error);
-            }
-          });
+
+      // Checking if the email is valid
+      function isValidEmail(email) {
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailPattern.test(email);
       }
-    });
+
+      if (!email || !password) {
+          showError('All fields are required');
+          return;
+      }
+
+      if (!isValidEmail(email)) {
+          showError('Please enter a valid email address');
+          return;
+      }
+
+      removeError();
+
+      try {
+          const response = await axios.post(
+              'http://localhost:8005/users/login',
+              {
+                  email: email,
+                  password: password
+              }
+          );
+
+          if (response.status === 200) {
+              const responseData = response.data;
+              if (responseData.token) {
+                  // Save the token and user data locally
+                  localStorage.setItem('token', responseData.token);
+                  localStorage.setItem('user', JSON.stringify(responseData.user));
+              }
+              removeError();
+              loginSuccessMessage.textContent = responseData.message;
+              // Redirect to appropriate dashboard based on user type
+              if (responseData.user.is_admin === 1) {
+                  window.location.href = '../admin/dashboard.html';
+              } else {
+                  window.location.href = '../products/products.html';
+              }
+          } else {
+              if (response.data && response.data.error) {
+                  showError(response.data.error);
+              } else {
+                  showError('Invalid credentials');
+              }
+          }
+      } catch (error) {
+          if (error.response && error.response.data && error.response.data.error) {
+              showError(error.response.data.error);
+          } else {
+              showError('Invalid credentials');
+          }
+      }
   });
-  
+});

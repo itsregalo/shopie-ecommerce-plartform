@@ -20,8 +20,19 @@ const customeregister = async (req, res) => {
         if(error){
             return res.status(422).json({error: error.details})
         }
-        const hashedPwd = await bcrypt.hash(password, 5)
         const pool = await mssql.connect(sqlConfig)
+        const checkEmailQuery = await pool
+        .request()
+        .input('email', email)
+        .execute('fetchUserByEmailPROC')
+        console.log(checkEmailQuery);
+        if(checkEmailQuery.rowsAffected[0] == 1){
+            return res.status(400).json({error: 'Account creation failed! This email is already registered'})   
+        }
+
+        const hashedPwd = await bcrypt.hash(password, 5)
+
+        // const pool = await mssql.connect(sqlConfig)
         const result = await pool.request()
         .input('id', id)
         .input('first_name', mssql.VarChar, firstName)

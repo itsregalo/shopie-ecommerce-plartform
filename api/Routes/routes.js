@@ -5,7 +5,7 @@ const {
     deleteProduct, 
     add_to_cart} = require('../Controllers/productsController');
 const { customeregister, login, adminregister } = require('../Controllers/Auth.controller');
-const { forgotPassword} = require('../Controllers/forgotpwd.controller');
+const { forgotPassword, resetPassword} = require('../Controllers/forgotpwd.controller');
 const productRouter = Router();
 
 //Authentication
@@ -13,7 +13,7 @@ productRouter.post('/register', customeregister);
 productRouter.post('/login', login);
 productRouter.post('/adminregister', adminregister);
 productRouter.post('/forgot-password', forgotPassword);
-
+productRouter.post('/reset-password', resetPassword);
 
 
 

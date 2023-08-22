@@ -53,8 +53,9 @@ const forgotPassword = async (req, res) => {
             from: emailConfig.auth.user, // Sender's email
             to: email, // User's email
             subject: 'Reset Password', // Email subject
-            html: `<h2>Click on the link below to reset your password</h2>
-                   <p><a href="http://localhost:3000/resetpassword/${resetToken}">Reset Password</a></p>` // Reset password link
+            html: `<h1>Shopie Ecommerce</h1>
+            <h2>Click on the link below to reset your password</h2>
+                   <p><a href="http://localhost:8005/client/Auth/resetpassword.html/${resetToken}">Reset Password</a></p>` // Reset password link
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -69,6 +70,34 @@ const forgotPassword = async (req, res) => {
     }
 };
 
+// POST /users/reset-password
+const resetPassword = async (req, res) => {
+    try {
+        const { resetToken, password } = req.body;
+
+        if (!resetToken || !password) {
+            return res.status(400).json({ error: 'Please provide reset token and new password' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const pool = await mssql.connect(sqlConfig);
+        const result = await pool.request()
+            .input('email', decodedToken.email)
+            .input('password', hashedPassword)
+            .execute('resetPasswordPROC'); 
+        
+        if (result.rowsAffected[0] === 1) {
+            return res.status(200).json({ message: 'Password reset successful' });
+        } else {
+            return res.status(400).json({ error: 'Password reset failed' });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: `Internal server error, ${error.message}` });
+    }
+};
+
 module.exports = {
-    forgotPassword
+    forgotPassword,
+    resetPassword
 };

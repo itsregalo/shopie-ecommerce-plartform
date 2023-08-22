@@ -31,7 +31,7 @@ module.exports.registrationSchema = Joi.object({
     .required()
     .messages({
         'string.email': `enter correct email format`,
-        'any.required': `email filed is required`
+        'any.required': `email filled is required`
     }),
 
     password: Joi.string()
@@ -50,7 +50,7 @@ module.exports.loginSchema = Joi.object({
     .required()
     .messages({
         'string.email': `enter correct email format`,
-        'any.required': `email filed is required`
+        'any.required': `email filled is required`
     }),
 
     password: Joi.string()

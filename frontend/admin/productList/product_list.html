@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">   
+    <link href="../styles.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Product List</title>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="logo">
+                <img src="../icon/logo.png" alt="">
+            </div>
+            <div class="user">
+                <img class="" src="../icon/prof.png" width="120">
+                <h5> Anthony Kigotho</h5>
+                <p> anthonykigotho9@gmail.com</p>
+            </div>
+            <div class="sidebar-heading">Management</div>
+            <div class="">
+                <a href="../dashboard/index.html" class="sidebar-item"><span><img src="../icon/home.png" alt="" style="width: 24px"></span> Dashboard</a>
+                <div class="">
+                    <div class="">
+                        <a class="sidebar-item" type="button"><span><img src="../icon/products.png" alt="" style="width: 24px;"></span> Products</a>
+                        <div class="" id="products">
+                            <a href="../addProduct/add_product.html" class=""> Add Product</a>
+                            <a href="product_list.html" class=""> Product List</a>
+                            <a href="../categories/categories.html" class=""> Categories</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="../customers/customers.html" class="sidebar-item"><span><img src="../icon/customers.png" alt="" style="width: 24px;"></span> Customers</a>
+            </div>
+            <div class="sidebar-heading">Settings </div>
+            <div id="settings-container">
+                <a href="../profile/profile.html" class=" "><span><img src="../icon/usericon.png" alt="" style="width: 24px;"></span> Profile</a>
+                <a href="" class=" "><span><img src="../icon/power.png" alt="" style="width: 24px;"></span> Logout</a>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="">
+
+
+                <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
+                    <span> <img src="../icon/menu.png" alt=""></span>
+                </button>
+
+            </nav>
+
+            <div class="container">
+                <h1 style="text-align: center; margin-top: 0;">Product List</h1>
+                <hr>
+                <div class="products-container">
+
+                    <div>
+                        <table style=" width: 45rem;">
+                            <thead>
+                                <tr>
+                                    <th> #</th>
+                                    <th> Product</th>
+                                    <th> Name</th>
+                                    <th> Description</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                <!-- <tr>
+                                     <td>1</td>
+                                     <td>
+                                         <img src=" " style="height: 100px; width: 100px; object-fit: cover;">
+                                     </td>
+                                     <td>ProductName</td>
+                                     <td>Product description</td>
+                                     <td class="text-center">
+                                         <a href="" id="edit-btn">Edit</a>
+                                     </td>
+                                     <td class="text-center">
+                                         <a href="" id="delete-btn">Delete</a>
+                                     </td>
+                                 </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title">Update Product</h2>
+            <form action="" id="product-form">
+                <div class="info-item">
+                    <h5 class="info-title">1. General info</h5>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="productTitle">Product title</label>
+                            <input type="text" class="form-control" id="productTitle" name="productTitle" value="" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Product description</label>
+                            <textarea class="form-control" rows="5" id="productDescription" name="productDescription" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="unitsInStock">Units in stock</label>
+                            <input type="number" class="form-control" id="unitsInStock" name="unitsInStock" value="" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <h5 class="info-title">2. Pricing</h5>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="productPrice">Price</label>
+                            <input type="number" class="form-control" id="productPrice" name="productPrice" value="" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <h5 class="info-title">3. Media</h5>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for='imageFile' class="bold-label">Select 1 image file:</label>
+                            <input class="form-control-file" id='imageFile' name='imageFile' type='file' required>
+                        </div>
+                    </div>
+                </div>
+                <input class="add-btn" type="submit" name="save" value="UPDATE PRODUCT">
+            </form>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

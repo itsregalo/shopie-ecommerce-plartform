@@ -1,0 +1,22 @@
+{
+  "name": "services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwaiseghe/shopie-ecommerce-plartform.git"
+  },
+  "author": "Rachael, Gift, Anthony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwaiseghe/shopie-ecommerce-plartform/issues"
+  },
+  "homepage": "https://github.com/mwaiseghe/shopie-ecommerce-plartform#readme",
+  "dependencies": {
+    "jest": "^29.6.3"
+  }
+}

@@ -25,7 +25,6 @@ const customeregister = async (req, res) => {
         .request()
         .input('email', email)
         .execute('fetchUserByEmailPROC')
-        console.log(checkEmailQuery);
         if(checkEmailQuery.rowsAffected[0] == 1){
             return res.status(400).json({error: 'Account creation failed! This email is already registered'})   
         }

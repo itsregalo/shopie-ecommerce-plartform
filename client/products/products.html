@@ -35,21 +35,6 @@
     <div class="container">
         <div class="main-body">
             <div class="products">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://www.hisensedealers.co.ke/wp-content/uploads/2023/08/Hisense-100-Inch-Laser-TV-L5-Series-HE-100L5.jpg" 
-                        alt="product-1" width="200px">
-                    </div>
-                    <div class="product-info">
-                        <a href="/client/products/products_details.html">
-                            <h4>
-                                Hisense Laser Tv
-                            </h4>
-                        </a>
-                        <p>Price: $100</p>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
 
                 <div class="product-card">
                     <div class="product-image">
@@ -67,71 +52,56 @@
                     </div>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://www.hisensedealers.co.ke/wp-content/uploads/2023/08/Hisense-100-Inch-Laser-TV-L5-Series-HE-100L5.jpg" 
-                        alt="product-1" width="200px">
-                    </div>
-                    <div class="product-info">
-                        <a href="/client/products/products_details.html">
-                            <h4>
-                                Hisense Laser Tv
-                            </h4>
-                        </a>
-                        <p>Price: $100</p>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://www.hisensedealers.co.ke/wp-content/uploads/2023/08/Hisense-100-Inch-Laser-TV-L5-Series-HE-100L5.jpg" 
-                        alt="product-1" width="200px">
-                    </div>
-                    <div class="product-info">
-                        <a href="/client/products/products_details.html">
-                            <h4>
-                                Hisense Laser Tv
-                            </h4>
-                        </a>
-                        <p>Price: $100</p>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://www.hisensedealers.co.ke/wp-content/uploads/2023/08/Hisense-100-Inch-Laser-TV-L5-Series-HE-100L5.jpg" 
-                        alt="product-1" width="200px">
-                    </div>
-                    <div class="product-info">
-                        <a href="/client/products/products_details.html"></a>
-                            <h4>
-                                Hisense Laser Tv
-                            </h4>
-                        </a>
-                        <p>Price: $100</p>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://www.hisensedealers.co.ke/wp-content/uploads/2023/08/Hisense-100-Inch-Laser-TV-L5-Series-HE-100L5.jpg" 
-                        alt="product-1" width="200px">
-                    </div>
-                    <div class="product-info">
-                        <a href="/client/products/products_details.html">
-                            <h4>
-                                Hisense Laser Tv
-                            </h4>
-                        </a>
-                        <p>Price: $100</p>
-                        <button>Add to Cart</button>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
+
+    <script>
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+        const base_url = 'http://127.0.0.1:8005/api';
+
+        const fetchAllProducts = async()=>{
+            const response = await fetch(`${base_url}/products/`, {
+                headers:{
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${token}`
+                }
+            });
+            const data = await response.json();
+            return data;
+        }
+
+        const displayProducts = async()=>{
+            const product_div = document.querySelector('.products');
+            const products = await fetchAllProducts();
+
+            products.products.forEach(product => {
+                const product_card = document.createElement('div');
+                product_card.classList.add('product-card');
+
+                const inner_html = `
+                    <div class="product-image">
+                        <img src="${product.product_image}" 
+                        alt="product-1" width="200px">
+                    </div>
+                    <div class="product-info">
+                        <a href="/client/products/products_details.html">
+                            <h4>
+                                ${product.product_name}
+                            </h4>
+                        </a>
+                        <p>Price: $100</p>
+                        <button>Add to Cart</button>
+                    </div>
+                `;
+                product_card.innerHTML = inner_html;
+                product_div.appendChild(product_card);
+            });
+        }
+
+        displayProducts();
+    </script>
 </body>
 </html>

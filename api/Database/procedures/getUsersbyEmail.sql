@@ -8,4 +8,11 @@ BEGIN
 END
 GO
 
-EXEC fetchUserByEmailPROC 'rachaelmuga2@gmail.com'
+CREATE OR ALTER PROCEDURE fetchUserByEmailUpgradedPROC(@email VARCHAR(255))
+AS
+BEGIN
+    UPDATE users SET is_admin = 1 WHERE email = @email
+END
+GO
+
+EXEC fetchUserByEmailUpgradedPROC @email = 'admin@gmail.com';

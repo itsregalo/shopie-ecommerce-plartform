@@ -464,6 +464,111 @@ body{
     background-color: #990306;
 }
 
+/* Token Page */
+.token-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.token-logo{
+    padding-top: 40px;
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.token-logo a{
+    text-decoration: none;
+    color: #4790FC ;
+    font-size: 18px;
+    font-weight: 600;
+}
+.token-logo a:hover{
+    color: #a30306;
+}
+.token-logo img{
+    width: 30%;
+    height: 50%;
+    object-fit: contain;
+}
+.token-content{
+    display: flex;
+    flex-direction: column;
+    color:#000;
+    margin: -50px auto ;
+    gap: 30px;
+}
+.token-content h1{
+    font-size: 60px;
+    font-weight: 900;
+    margin-top: 70px;
+    margin-left: 120px;
+}
+.token-content p{
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 40px;
+    padding-right: 100px;
+    margin: 0 auto;
+}
+.token-form{
+    width: 50%;                 
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    background-color: #4790FC;
+    margin: auto;
+    padding-left: 30px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+.token-form form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    gap: 25px;
+}
+.token-form form label{
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.token-form form label:after{
+    content: " *";
+    color: red;
+}
+.token-form form input{
+    width: 70%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 16px;
+    background-color: #f4f4f8; 
+    justify-content: center; 
+  margin-left: 20px;
+}
+.token-form form button{
+    width: 18%;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ED2326;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 30%;
+}
+.token-form form button:hover{
+    background-color: #990306;
+}
+
 /* product header */
 nav{
     display: flex;
@@ -607,3 +712,9 @@ nav{
     font-size: 18px;
     padding-left: 150px;
   }
+ #tokenErrorMessage{
+    color: red;
+    font-size: 18px;
+    padding-left: 150px;
+    margin-bottom: 10px;
+ }

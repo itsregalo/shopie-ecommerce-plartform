@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.status === 200) {
                 forgotPwdSuccessMessage.textContent = response.data.message;
+                // should redirect you to token page
+                window.location.href = '../Auth/token.html';
             } else {
                 if (response.data && response.data.error) {
                     showError(response.data.error);

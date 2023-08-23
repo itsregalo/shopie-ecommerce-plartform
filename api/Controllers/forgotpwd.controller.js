@@ -39,6 +39,12 @@ const forgotPassword = async (req, res) => {
         // Generate a dedicated reset token
         const resetToken = createToken({ email }, '1d'); // Set expiration (e.g., 1 day)
 
+        const pool = await mssql.connect(sqlConfig);
+        await pool.request()
+            .input('email', email)
+            .input('token', resetToken) // Insert reset token into the database
+            .execute('insertResetTokenPROC'); // Create this stored procedure
+
         const transporter = nodemailer.createTransport({
             host: emailConfig.host,
             port: emailConfig.port,
@@ -54,8 +60,8 @@ const forgotPassword = async (req, res) => {
             to: email, // User's email
             subject: 'Reset Password', // Email subject
             html: `<h1>Shopie Ecommerce</h1>
-            <h2>Click on the link below to reset your password</h2>
-                   <p><a href="http://localhost:8005/client/Auth/resetpassword.html/${resetToken}">Reset Password</a></p>` // Reset password link
+            <h2>Copy this token to reset your password</h2>
+                   <p>${resetToken}</p>` // Reset password link
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -65,6 +71,32 @@ const forgotPassword = async (req, res) => {
                 return res.status(200).json({ message: 'Email sent successfully' });
             }
         });
+    } catch (error) {
+        return res.status(500).json({ error: `Internal server error, ${error.message}` });
+    }
+};
+
+
+// Function to verify if the reset token exists in the database
+const verifyToken = async (req, res) => {
+    try {
+        const { token } = req.body;
+
+        console.log(token);
+        if (!token) {
+            return res.status(400).json({ error: 'Please provide a token' });
+        }
+
+        const pool = await mssql.connect(sqlConfig);
+        const result = await pool.request()
+            .input('token', token)
+            .execute('verifyResetTokenPROC'); // Replace with your stored procedure or query
+
+        if (result.recordset.length === 1) {
+            return res.status(200).json({ message: 'Token is valid' });
+        } else {
+            return res.status(400).json({ error: 'Invalid token' });
+        }
     } catch (error) {
         return res.status(500).json({ error: `Internal server error, ${error.message}` });
     }
@@ -99,5 +131,6 @@ const resetPassword = async (req, res) => {
 
 module.exports = {
     forgotPassword,
-    resetPassword
+    resetPassword,
+    verifyToken
 };

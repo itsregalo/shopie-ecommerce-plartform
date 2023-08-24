@@ -44,7 +44,7 @@ const createNewCategory = async (req, res) => {
 const getAllCategories = async (req, res) => {
     try {
         const pool = await mssql.connect(sqlConfig)
-        const categories = await pool.request()
+        const categories = await pool.requexst()
                 .execute('get_all_categories')
 
         res.status(200).json({

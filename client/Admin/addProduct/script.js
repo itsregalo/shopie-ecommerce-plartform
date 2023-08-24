@@ -4,10 +4,14 @@ let product = {
 
 };
 
+window.onload = async() =>{
+    await fetchAllCategories()
+}
+
 const getProductDetails = () => {
     const productTitle = document.querySelector('#productTitle').value
     const productDescription = document.querySelector('#productDescription').value
-    // const productCategory = document.querySelector('#productCategory').value
+    const productCategory = document.querySelector('input[name="category"]:checked').value
     const unitsInStock = document.querySelector('#unitsInStock').value
     const productPrice = document.querySelector('#productPrice').value
     const imageFile = document.querySelector('#imageFile').value
@@ -16,7 +20,7 @@ const getProductDetails = () => {
     product = {
         product_name: productTitle,
         product_description: productDescription,
-        product_category_id: "269841a1-28f7-4b6e-af4a-a2d08bad43c2",
+        product_category_id: productCategory,
         product_stock: unitsInStock,
         product_price: productPrice,
         product_image: imageFile
@@ -54,8 +58,47 @@ productForm.addEventListener('submit', async (e) => {
 
 });
 
+const fetchAllCategories = async ()=>{
 
-
+    try {
+    
+        let html =``
+    
+        const res = await fetch('http://localhost:8005/api/products/category/all',{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        
+    
+        const data = await res.json()
+        const categories = data.categories 
+    
+        categories.map(category => {
+            html += `
+            <br>
+            <label>
+                <input type="radio" name="category" value="${category.id}" required> ${category.category_name}
+            </label>
+            `
+        })
+    
+        let categoriesContainer = document.querySelector('#categories-container')
+        categoriesContainer.innerHTML = html
+        
+    } catch (error) {
+    
+        // console.log(error)
+        // alerts.innerHTML = `
+        // <div class="alerts">${error.message}</div>
+        // `
+        // setTimeout(()=>{
+        //     alerts.innerHTML =''
+        // },3000)
+        
+    }
+}
 
 
 

@@ -47,9 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     );
         
                     if (response.status === 200) {
-                        tokenSuccessMessage.textContent = response.data.message;
-                        // Redirect to reset password page if the token is valid
-                        window.location.href = '../Auth/resetpassword.html';
+                        // tokenSuccessMessage.textContent = response.data.message;
+                        if(response.data.message === 'Token is valid') {
+                            // Redirect to reset password page if the token is valid
+                            window.location.href = '../Auth/resetpassword.html';
+                        }
                     } else {
                         if (response.data && response.data.error) {
                             showError(response.data.error);
@@ -98,9 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(response);
 
             if (response.status === 200) {
-                tokenSuccessMessage.textContent = response.data.message;
+                // tokenSuccessMessage.textContent = response.data.message;
                 // Redirect to reset password page if the token is valid
-                window.location.href = '../Auth/resetpassword.html';
+                // window.location.href = '../Auth/resetpassword.html';
             } else {
                 if (response.data && response.data.error) {
                     showError(response.data.error);

@@ -90,7 +90,7 @@ const verifyToken = async (req, res) => {
         const pool = await mssql.connect(sqlConfig);
         const result = await pool.request()
             .input('token', token)
-            .execute('verifyResetTokenPROC'); // Replace with your stored procedure or query
+            .execute('verifyResetTokenPROC');
 
         if (result.recordset.length === 1) {
             return res.status(200).json({ message: 'Token is valid' });

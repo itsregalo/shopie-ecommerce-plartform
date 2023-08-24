@@ -21,7 +21,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE upgradeUserToAdminPROC(@user_id INT)
+CREATE OR ALTER PROCEDURE upgradeUserToAdminPROC(@user_id VARCHAR(255))
 AS
 BEGIN
     UPDATE users
@@ -50,3 +50,4 @@ END
 GO
 
 EXEC upgradeUserToAdminUsingEmailPROC @email = 'rachaelmuga2@gmail.com';
+EXEC upgradeUserToAdminUsingEmailPROC @email = 'admin@gmail.com';

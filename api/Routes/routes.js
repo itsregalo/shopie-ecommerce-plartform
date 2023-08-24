@@ -3,7 +3,8 @@ const {
     getAllProducts, getProductById, createNewCategory, 
     getAllCategories, createNewProduct, updateProduct, 
     deleteProduct, 
-    add_to_cart} = require('../Controllers/productsController');
+    add_to_cart,
+    getCategoryById} = require('../Controllers/productsController');
 const { customeregister, login, adminregister } = require('../Controllers/Auth.controller');
 const { forgotPassword} = require('../Controllers/forgotpwd.controller');
 const { verifyToken } = require('../Middleware/verifyToken');
@@ -21,12 +22,14 @@ productRouter.post('/', verifyToken, createNewProduct);
 productRouter.get('/:id', getProductById);
 productRouter.put('/:id', verifyToken,updateProduct);
 productRouter.delete('/:id', verifyToken, deleteProduct);
+productRouter.get('/search/:name', getAllProducts);
 
 // categories
 productRouter.post('/category', verifyToken, createNewCategory)
 productRouter.get('/category/all', getAllCategories)
+productRouter.get('/category/:id', getCategoryById);
 
-productRouter.post('/add-to-cart', add_to_cart)
+productRouter.post('item/add-to-cart/:id', add_to_cart)
 
 module.exports = {
     productRouter

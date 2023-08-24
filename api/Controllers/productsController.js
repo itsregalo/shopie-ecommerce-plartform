@@ -59,6 +59,34 @@ const getAllCategories = async (req, res) => {
     }
 }
 
+const getCategoryById = async (req, res) => {
+    try {
+        const { id } = req.params
+        const pool = await mssql.connect(sqlConfig)
+        const category = await pool.request()
+                .input('category_id', mssql.VarChar, id)
+                .execute('get_category_by_id')
+
+        // if category is not found
+        if (!category.recordset[0]) {
+            return res.status(404).json({
+                error: 'Category not found'
+            })
+        }
+
+        res.status(200).json({
+            category: category.recordset[0]
+        })
+
+    }
+        catch (error) {
+            res.status(500).json({
+                error: error.message
+            })
+        }
+}
+
+
 
 const getAllProducts = async (req, res) => {
     try {
@@ -266,5 +294,6 @@ module.exports = {
     getAllCategories,
     updateProduct,
     deleteProduct,
-    add_to_cart
+    add_to_cart,
+    getCategoryById
 }

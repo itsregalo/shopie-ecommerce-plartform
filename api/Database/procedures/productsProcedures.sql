@@ -146,4 +146,12 @@ AS
 BEGIN
     SELECT * FROM cart_item WHERE cart_id = @cart_id AND product_id = @product_id;
 END;
+GO
 
+CREATE OR ALTER PROCEDURE get_category_by_id
+    @category_id VARCHAR(255)
+AS
+BEGIN
+    SELECT * FROM product_category WHERE id = @category_id;
+END;
+GO

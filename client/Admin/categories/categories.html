@@ -10,6 +10,7 @@
     <link href="../styles.css" rel="stylesheet">
     <link href="./styles.css" rel="stylesheet">
     <title>Product List</title>
+
 </head>
 
 <body>
@@ -106,8 +107,25 @@
     </div>
     <!-- /#page-content-wrapper -->
 
+    <!-- Modal Backdrop -->
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+
+    <!-- Modal Content -->
+    <div class="modal-content" id="modalContent">
+        <button class="close-btn" id="closeModalBtn">&times;</button> <!-- Close button -->
+        <form id="update-category-form">
+            <div class="info-item">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="categoryName">Category name</label>
+                        <input type="text" class="form-control" id="newCategoryName" value="" required>
+                    </div>
+                </div>
+            </div>
+            <input class="add-btn" type="submit" name="save" value="UPDATE CATEGORY">
+        </form>
     </div>
-    <!-- /#wrapper -->
+
 
     <script src="../script.js"></script>
     <script src="./script.js"></script>

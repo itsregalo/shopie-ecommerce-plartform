@@ -305,7 +305,55 @@ const add_to_cart = async (req, res) => {
         }
 }
 
+const getCartItems = async (req, res) => {
+    try {
+        const pool = await mssql.connect(sqlConfig)
+        const cart = await pool.request()
+                .execute('get_all_products_in_cart')
 
+        res.status(200).json({
+            cart: cart.recordset
+        })
+    }
+
+    catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
+
+const removeItemFromCart = async (req, res) => {
+    try {
+        const { id } = req.params
+        const pool = await mssql.connect(sqlConfig)
+
+        // checking if product exists
+        const productExists = await pool.request()
+                .input('product_id', mssql.VarChar, id)
+                .execute('get_product_by_id')
+
+        if (!productExists.recordset[0]) {
+            return res.status(404).json({
+                error: 'Product not found'
+            })
+        }
+
+        const cart = await pool.request()
+                .input('product_id', mssql.VarChar, id)
+                .execute('remove_product_from_cart')
+
+        res.status(200).json({
+            message: 'Product removed from cart successfully',
+        })
+    }
+    
+    catch (error) {
+        res.status(500).json({
+            error: error.message
+        })
+    }
+}
 
 module.exports = {
     getAllProducts,
@@ -316,5 +364,7 @@ module.exports = {
     updateProduct,
     deleteProduct,
     add_to_cart,
-    getCategoryById
+    getCategoryById,
+    getCartItems,
+    removeItemFromCart
 }

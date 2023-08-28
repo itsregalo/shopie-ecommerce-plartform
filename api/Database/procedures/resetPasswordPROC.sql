@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 USE shopie_ecommerce;
 GO
 
@@ -9,42 +8,10 @@ GO
 CREATE PROCEDURE resetPasswordPROC
     @email VARCHAR(255),
     @password VARCHAR(255)
-=======
-USE shopie_ecommerce
-GO
-
-DROP PROCEDURE IF EXISTS resetPasswordPROC
-GO
-
-CREATE PROCEDURE resetPasswordPROC
-    @email NVARCHAR(255),
-    @password NVARCHAR(255)
->>>>>>> dev
 AS
 BEGIN
     SET NOCOUNT ON;
 
-<<<<<<< HEAD
-    -- Check if the user with the provided email exists
-    IF EXISTS (SELECT 1 FROM users WHERE email = @email)
-    BEGIN
-        -- Update the user's password
-        UPDATE users
-        SET password = @password,
-            updated_at = GETDATE() -- Set the updated timestamp
-        WHERE email = @email;
-
-        -- Return success message
-        SELECT 'Password reset successful' AS message;
-    END
-    ELSE
-    BEGIN
-        -- Return error message
-        SELECT 'Password reset failed' AS error;
-    END
-END;
-GO
-=======
     DECLARE @userId NVARCHAR(255);
 
     -- Get the user ID based on the provided email
@@ -70,4 +37,3 @@ GO
     END
 END;
 GO
->>>>>>> dev

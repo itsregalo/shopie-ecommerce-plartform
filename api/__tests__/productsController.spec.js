@@ -78,6 +78,7 @@ describe('createNewCategory', () => {
     })
 })
 
+
 describe('CreateNewProduct', () => {
     it('should return 400 if all fields are not provided', async () => {
         const req = {

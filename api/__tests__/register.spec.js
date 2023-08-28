@@ -1,10 +1,7 @@
 //testing Auth controller
-const bcrypt = require("bcryptjs")
 const mssql = require("mssql")
 const jwt = require("jsonwebtoken")
-const token = require("../utilis/token.gen.js")
 const hash= require("../utilis/hashedpwd.js")
-const {sqlConfig} = require("../Config/Config.js")
 const {customeregister} = require("../Controllers/Auth.controller.js")
 
 

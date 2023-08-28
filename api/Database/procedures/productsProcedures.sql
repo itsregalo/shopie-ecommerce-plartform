@@ -119,13 +119,14 @@ GO
 
 -- add product to cart
 CREATE OR ALTER PROCEDURE add_product_to_cart
+    @id VARCHAR(255),
     @cart_id VARCHAR(255),
     @product_id VARCHAR(255),
     @product_quantity INT
 AS
 BEGIN
-    INSERT INTO cart_item (cart_id, product_id, product_quantity)
-    VALUES (@cart_id, @product_id, @product_quantity);
+    INSERT INTO cart_item (id, cart_id, product_id, product_quantity)
+    VALUES (@id, @cart_id, @product_id, @product_quantity);
 END;
 GO  
 

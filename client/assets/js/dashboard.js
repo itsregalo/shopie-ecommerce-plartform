@@ -95,3 +95,35 @@ const displayProductDetails = async()=>{
     `;
     product_div.innerHTML = inner_html;
 }
+
+
+const addProductToCart = async()=>{
+    const response = await fetch(`${base_url}/products/item/add-to-cart/${id}`, {
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            product_quantity: 1
+        })
+        
+    });
+    const data = await response.json();
+    return data;
+}
+
+const add_several_products_to_cart = async()=>{
+    const response = await fetch(`${base_url}/products/item/add-to-cart/${id}`, {
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            product_quantity: 1
+        })
+        
+    });
+    const data = await response.json();
+    return data;
+}
+

@@ -32,7 +32,7 @@ productRouter.post('/category', verifyToken, createNewCategory)
 productRouter.get('/category/all', getAllCategories)
 productRouter.get('/category/:id', getCategoryById);
 
-productRouter.post('item/add-to-cart/:id', add_to_cart)
+productRouter.post('/item/add-to-cart/:id', add_to_cart)
 
 module.exports = {
     productRouter

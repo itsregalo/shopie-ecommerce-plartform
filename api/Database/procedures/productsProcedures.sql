@@ -119,22 +119,32 @@ GO
 
 -- add product to cart
 CREATE OR ALTER PROCEDURE add_product_to_cart
+    @id VARCHAR(255),
     @cart_id VARCHAR(255),
     @product_id VARCHAR(255),
     @product_quantity INT
 AS
 BEGIN
-    INSERT INTO cart_item (cart_id, product_id, product_quantity)
-    VALUES (@cart_id, @product_id, @product_quantity);
+    INSERT INTO cart_item (id, cart_id, product_id, product_quantity)
+    VALUES (@id, @cart_id, @product_id, @product_quantity);
 END;
 GO  
 
--- get all products in cart
-CREATE OR ALTER PROCEDURE get_all_products_in_cart
-    @cart_id VARCHAR(255)
+-- remove product from cart
+CREATE OR ALTER PROCEDURE remove_product_from_cart
+    @cart_id VARCHAR(255),
+    @product_id VARCHAR(255)
 AS
 BEGIN
-    SELECT * FROM cart_item WHERE cart_id = @cart_id;
+    DELETE FROM cart_item WHERE cart_id = @cart_id AND product_id = @product_id;
+END;
+GO
+
+-- get all products in cart
+CREATE OR ALTER PROCEDURE get_all_products_in_cart
+AS
+BEGIN
+    SELECT * FROM cart_item;
 END;
 GO
 

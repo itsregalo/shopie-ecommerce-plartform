@@ -95,3 +95,90 @@ const displayProductDetails = async()=>{
     `;
     product_div.innerHTML = inner_html;
 }
+
+
+const addProductToCart = async()=>{
+    const response = await fetch(`${base_url}/products/item/add-to-cart/${id}`, {
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            product_quantity: 1
+        })
+        
+    });
+    const data = await response.json();
+    return data;
+}
+
+const add_several_products_to_cart = async()=>{
+    const response = await fetch(`${base_url}/products/item/add-to-cart/${id}`, {
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            product_quantity: 1
+        })
+        
+    });
+    const data = await response.json();
+    return data;
+}
+
+const fetchCartItems = async()=>{
+    const response = await fetch(`${base_url}/products/item/get-cart-items/`, {
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    });
+    const data = await response.json();
+    return data;
+}
+
+
+const displayCartProducts = async () => {
+    const product_div = document.querySelector('.products');
+    const products = await fetchCartItems();
+
+    //count number of items in cart
+    const cart_items = products.cart.length;
+    
+    const cart_items_count = document.querySelector('.cart-count');
+    cart_items_count.innerHTML = cart_items;
+
+    for (const product of products.cart) {
+        const product_card = document.createElement('div');
+        product_card.classList.add('product-card');
+
+        // get product id
+        const product_id = product.product_id;
+
+        // get product details
+        const product_details = await fetchProductId(product_id);
+        console.log(product_details);
+
+        const inner_html = `
+            <div class="product-image">
+                <img src="${product_details.product.product_image}" 
+                alt="product-1" width="200px">
+            </div>
+            <div class="product-info">
+                <a href="/client/products/products_details.html?id=${product.id}">
+                    <h4>
+                        ${product_details.product.product_name}
+                    </h4>
+                </a>
+                <p>Price: $${product_details.product.product_price}</p>
+                <button id="add_to_cart">
+                    <a href="">Remove from Cart</a>
+                </button>
+            </div>
+        `;
+        product_card.innerHTML = inner_html;
+        product_div.appendChild(product_card);
+    }
+}
+
+

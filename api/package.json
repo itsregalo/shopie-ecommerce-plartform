@@ -5,8 +5,7 @@
   "main": "App.js",
   "scripts": {
     "start": "nodemon App.js",
-   "test": "jest --watchAll "
-    
+    "test": "jest --watchAll "
   },
   "author": "Anthony, Rachael, Gift",
   "license": "ISC",

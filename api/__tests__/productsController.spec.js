@@ -31,7 +31,6 @@ describe('createNewCategory', () => {
                 recordset: mock_products
             })
          })
-        }
+        })
     })
-)
 

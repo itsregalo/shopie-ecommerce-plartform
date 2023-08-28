@@ -76,31 +76,30 @@ const forgotPassword = async (req, res) => {
     }
 };
 
-
 // Function to verify if the reset token exists in the database
-const verifyToken = async (req, res) => {
+const verifyToken = async(req, res)=>{
     try {
-        const { token } = req.body;
+        const {token, email} = req.body
+        console.log(req.body);
+        const pool = await mssql.connect(sqlConfig)
+        const checkEmailQuery = await pool
+        .request()
+        .input('email', email)
+        .execute('fetchUserByEmailPROC')
 
-        console.log(token);
-        if (!token) {
-            return res.status(400).json({ error: 'Please provide a token' });
+        if(checkEmailQuery.recordset.length <= 0){
+            return res.status(404).json({error: 'Email is not registered'})
         }
-
-        const pool = await mssql.connect(sqlConfig);
-        const result = await pool.request()
-            .input('token', token)
-            .execute('verifyResetTokenPROC');
-
-        if (result.recordset.length === 1) {
-            return res.status(200).json({ message: 'Token is valid' });
-        } else {
-            return res.status(400).json({ error: 'Invalid token' });
+        
+        if(checkEmailQuery.recordset[0].password_reset_token == token ){
+            return res.status(200).json({message: `Valid Token`})
         }
+        return res.status(400).json({error: 'Invalid token or token expired'})
     } catch (error) {
-        return res.status(500).json({ error: `Internal server error, ${error.message}` });
+        return res.status(500).json({error: `Internal server error: ${error.message}`})
     }
-};
+}
+
 
 // POST /users/reset-password
 const resetPassword = async (req, res) => {

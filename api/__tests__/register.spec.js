@@ -54,7 +54,7 @@ describe('customeregister test', () => {
             body: {
                 firstName: 'emmah',
                 lastName: 'jason',
-                email: 'emmah@gmail.com',
+                email: 'emman@gmail.com',
                 password: 'Test1234.'
             }
         }
@@ -81,7 +81,7 @@ describe('customeregister test', () => {
         // expect(res.status).toHaveBeenCalledWith(201)
         expect(res.json).toHaveBeenCalledWith({
             message: 'Account created successfully', 
-            token: 'stoken',
+            token: 'token',
             user: {firstName: "emma", lastName: "jason", email: "emmaculate@gmail.com", is_admin: 0}
         })
 

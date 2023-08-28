@@ -1,4 +1,9 @@
+
+const urlParams = new URLSearchParams(window.location.search);
+const email = urlParams.get('email');
+
 document.addEventListener('DOMContentLoaded', function() {
+    
     const tokenForm = document.getElementById('token-form');
     const tokenInput = document.getElementById('password-token');
     const tokenErrorMessage = document.getElementById('tokenErrorMessage');
@@ -37,12 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
         
                 removeError();
-        
+                window.location.href = '../Auth/resetpassword.html';
+
                 try {
+                    console.log(email);
                     const response = await axios.post(
                         'http://localhost:8005/users/verify-token',
                         {
-                            token: token
+                            token: token,
+                            email: email
                         }
                     );
         
@@ -53,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             window.location.href = '../Auth/resetpassword.html';
                         }
                     } else {
+                        window.location.href = '../Auth/resetpassword.html';
                         if (response.data && response.data.error) {
                             showError(response.data.error);
                         } else {
@@ -60,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                 } catch (error) {
+                    window.location.href = '../Auth/resetpassword.html';
                     if (error.response && error.response.data && error.response.data.error) {
                         showError(error.response.data.error);
                     } else {
@@ -89,11 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
         removeError();
 
         try {
+            console.log(email);
             const tokenString = document.querySelector('#password-token').value
             const response = await axios.post(
                 'http://localhost:8005/users/verify-token',
                 {
-                    token: tokenString
+                    token: tokenString,
+                    email: email
                 }
             );
 
@@ -102,8 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.status === 200) {
                 // tokenSuccessMessage.textContent = response.data.message;
                 // Redirect to reset password page if the token is valid
-                // window.location.href = '../Auth/resetpassword.html';
+                window.location.href = '../Auth/resetpassword.html';
             } else {
+                window.location.href = '../Auth/resetpassword.html';
                 if (response.data && response.data.error) {
                     showError(response.data.error);
                 } else {
@@ -111,11 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         } catch (error) {
-            if (error.response && error.response.data && error.response.data.error) {
-                showError(error.response.data.error);
-            } else {
-                console.error(error);
-            }
+            window.location.href = '../Auth/resetpassword.html';
+            // if (error.response && error.response.data && error.response.data.error) {
+            //     showError(error.response.data.error);
+            // } else {
+            //     console.error(error);
+            // }
         }
     });
 });

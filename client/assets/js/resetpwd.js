@@ -1,6 +1,7 @@
 // Get the reset token from the URL parameter
 const resetToken = window.location.pathname.split('/').pop();
 
+
 // Get the form element
 const resetPwdForm = document.getElementById('resetpwd-form');
 
@@ -69,6 +70,7 @@ resetPwdForm.addEventListener('submit', async function(event) {
             showError(data.error || 'Password reset failed');
         }
     } catch (error) {
-        showError('An error occurred during password reset');
+        window.location.href = '../Auth/login.html';
+        // showError('An error occurred during password reset');
     }
 });

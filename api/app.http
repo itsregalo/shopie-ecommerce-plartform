@@ -19,4 +19,13 @@ Content-Type: application/json
     "password" : "12345678"
 }
 
+### verify-token
+POST http://localhost:8005/users/verify-token
+Content-Type: application/json
+
+{
+    "email": "rachael@gmail.com",
+    "token" :""
+}
+
 

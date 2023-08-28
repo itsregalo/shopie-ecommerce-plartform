@@ -718,3 +718,188 @@ nav{
     padding-left: 150px;
     margin-bottom: 10px;
  }
+
+/* Default styles */
+
+/* ... (Your existing CSS) ... */
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .login-left {
+      width: 90%;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .login-right {
+      width: 90%;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .login-right p{
+        padding-left: 0px;
+        padding-right: 0px;
+        font-size: 16px;
+    }
+  
+    .login-logo {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .login-logo img {
+      width: 60%;
+    }
+  
+    .login-details {
+      margin-top: 40px;
+      padding-left: 20px;
+    }
+  
+    .login-details h1 {
+      font-size: 28px;
+    }
+  
+    .login-details form {
+      margin-left: 0;
+    }
+  
+    .login-details form input
+    {
+      width: 90%;
+      font-size: 14px;
+    }
+    .login-details form button {
+        width: 50%;
+        font-size: 14px;
+      }
+  
+    .login-details a {
+      margin-left: 0;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  /* Default styles */
+
+/* ... (Your existing CSS) ... */
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    .signup-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .signup-right {
+      width: 80%;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .signup-left{
+        width: 80%;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .signup-left p{
+        padding-left: 0px;
+        padding-right: 0px;
+        font-size: 16px;
+    }
+  
+    .signup-logo {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .signup-logo img {
+      width: 60%;
+    }
+  
+    .signup-details {
+      margin-top: 40px;
+      padding-left: 20px;
+    }
+  
+    .signup-details h1 {
+      font-size: 28px;
+    }
+  
+    #registerForm {
+      margin-left: 0;
+    }
+  
+    #registerForm input {
+      width: 80%;
+      font-size: 14px;
+    }
+    #registerForm button {
+        width: 40%;
+        font-size: 14px;
+      }
+  }
+
+
+  /* Default styles */
+
+/* ... (Your existing CSS) ... */
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    .forgotpwd-container {
+      height: 100%;
+      padding: 20px;
+    }
+  
+    .forgotpwd-logo img {
+      width: 50%;
+      height: auto;
+    }
+
+    /* hide image */
+    .forgotpwd-image{
+        display: none;
+    }
+  
+    .forgotpwd-innercontainer {
+      width: 90%;
+      padding: 20px;
+      margin-top: 20px;
+    }
+  
+    .forgotpwd-details h1 {
+      font-size: 30px;
+    }
+  
+    .forgotpwd-details p {
+      font-size: 16px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  
+    #forgotPwdForm input{
+      width: 80%;
+      font-size: 14px;
+      justify-self: center;
+    }
+    #forgotPwdForm button {
+        width: 50%;
+        font-size: 14px;
+      }
+  
+    .forgotpwd-details a {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  }
+  
+  
+  

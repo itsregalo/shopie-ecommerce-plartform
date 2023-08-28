@@ -49,8 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.status === 200) {
                 forgotPwdSuccessMessage.textContent = response.data.message;
+                
                 // should redirect you to token page
-                window.location.href = '../Auth/token.html';
+                window.location.href = `../Auth/token.html?email=${email}`;
             } else {
                 if (response.data && response.data.error) {
                     showError(response.data.error);
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         } catch (error) {
-            if (error.response && error.response.data && error.response.data.error) {
+            if ( error.response.data.error  ||  error.response.data || error.response ) {
                 showError(error.response.data.error);
             } else {
                 console.error(error);

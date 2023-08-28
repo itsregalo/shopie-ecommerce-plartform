@@ -8,8 +8,9 @@ const {
     getCartItems} = require('../Controllers/productsController');
 
 const { customeregister, login, adminregister } = require('../Controllers/Auth.controller');
-const { forgotPassword, verifyToken, resetPassword} = require('../Controllers/forgotpwd.controller');
+const { forgotPassword, verifytoken, resetPassword} = require('../Controllers/forgotpwd.controller');
 const productRouter = Router();
+const { verifyToken } = require('../Middleware/verifyToken');
 
 //Authentication
 productRouter.post('/register', customeregister);
@@ -17,7 +18,8 @@ productRouter.post('/login', login);
 productRouter.post('/adminregister', adminregister);
 productRouter.post('/forgot-password', forgotPassword);
 productRouter.post('/reset-password', resetPassword);
-productRouter.post('/verify-token', verifyToken);
+productRouter.post('/verify-token', verifytoken);
+productRouter.post('/verifyToken', verifyToken, verifyToken);
 
 // products
 productRouter.get('/', getAllProducts);

@@ -32,20 +32,17 @@ const customeregister = async (req, res) => {
         const hashedPwd = await bcrypt.hash(password, 5)
 
         // const pool = await mssql.connect(sqlConfig)
-        const result = await pool.request()
+        await pool.request()
         .input('id', id)
         .input('first_name', mssql.VarChar, firstName)
         .input('last_name', mssql.VarChar, lastName)
         .input('email', mssql.VarChar, email)
         .input('password', mssql.VarChar, hashedPwd)
         .execute('createNewUserPROC')
-        if(result.rowsAffected == 1){
-            const token = createToken({email, is_admin: 0})
-            return res.status(201).json({message: 'Account created successfully', token, user: {firstName, lastName, email, is_admin: 0}})
-
-        } else {
-            return res.status(400).json({error: 'Account creation failed'})
-        }
+        
+        // const token = jwt.sign({email, is_admin: 0}, process.env.SECRET_KEY, {  expiresIn: 24*60*60 })  
+        return res.status(201).json({message: 'Account created successfully'})
+       
     } catch(error){
         return res.status(500).json({error: `Internal server error, ${error.message}`})
     }
@@ -114,7 +111,9 @@ const adminregister = async (req, res) => {
                         .input('password', hashedPwd)
                         .execute('createNewUserPROC')
                     }).then(result => {
-                        const token = createToken(email, 1)
+                        const token = jwt.sign({email: result.recordset[0].email, is_admin: result.recordset[0].is_admin}, process.env.SECRET_KEY, {
+                            expiresIn: 24*60*60
+                        })
                         res.status(201).json({message: 'Account created successfully', token, user: {firstName, lastName, email, is_admin: 1}})
 
                     }).catch(error => {

@@ -77,10 +77,9 @@ const forgotPassword = async (req, res) => {
 };
 
 // Function to verify if the reset token exists in the database
-const verifyToken = async(req, res)=>{
+const verifytoken = async(req, res)=>{
     try {
         const {token, email} = req.body
-        console.log(req.body);
         const pool = await mssql.connect(sqlConfig)
         const checkEmailQuery = await pool
         .request()
@@ -88,7 +87,7 @@ const verifyToken = async(req, res)=>{
         .execute('fetchUserByEmailPROC')
 
         if(checkEmailQuery.recordset.length <= 0){
-            return res.status(404).json({error: 'Email is not registered'})
+            return res.status(404).json({error: 'Please input a token'})
         }
         
         if(checkEmailQuery.recordset[0].password_reset_token == token ){
@@ -107,7 +106,7 @@ const resetPassword = async (req, res) => {
         const { resetToken, password } = req.body;
 
         if (!resetToken || !password) {
-            return res.status(400).json({ error: 'Please provide reset token and new password' });
+            return res.status(400).json({ error: 'Please provide new password' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -131,5 +130,5 @@ const resetPassword = async (req, res) => {
 module.exports = {
     forgotPassword,
     resetPassword,
-    verifyToken
+    verifytoken
 };

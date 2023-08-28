@@ -49,5 +49,5 @@ BEGIN
 END
 GO
 
-EXEC upgradeUserToAdminUsingEmailPROC @email = 'rachaelmuga2@gmail.com';
+EXEC upgradeUserToAdminUsingEmailPROC @email = 'rachaeltems@gmail.com';
 EXEC upgradeUserToAdminUsingEmailPROC @email = 'admin@gmail.com';

@@ -85,8 +85,15 @@ CREATE OR ALTER PROCEDURE add_product
     @product_stock INT
 AS
 BEGIN
-    INSERT INTO product (id, product_name, product_description, product_category_id, product_initial_price, product_price, product_image, product_stock)
-    VALUES (@id, @product_name, @product_description, @product_category_id, @product_initial_price, @product_price, @product_image, @product_stock);
+    INSERT INTO product (
+        id, product_name, product_description, product_category_id, 
+        product_initial_price, product_price, product_image, 
+        product_stock
+        )
+    VALUES (
+        @id, @product_name, @product_description, @product_category_id, 
+        @product_initial_price, @product_price, @product_image, @product_stock
+        );
 END;
 GO
 
@@ -114,6 +121,17 @@ CREATE OR ALTER PROCEDURE delete_product
 AS
 BEGIN
     DELETE FROM product WHERE id = @product_id;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE user_cart
+    @id VARCHAR(255),
+    @user_id VARCHAR(255),
+    @cart_id VARCHAR(255)
+AS
+BEGIN
+    INSERT INTO cart (id, user_id, cart_id)
+    VALUES (@id, @user_id, @cart_id);
 END;
 GO
 
@@ -164,3 +182,7 @@ BEGIN
     SELECT * FROM product_category WHERE id = @category_id;
 END;
 GO
+
+-- CREATE OR ALTER PROCEDURE get_user_cart
+--     @user_id VARCHAR(255)
+-- AS

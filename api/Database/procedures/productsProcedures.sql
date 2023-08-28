@@ -132,11 +132,10 @@ GO
 
 -- remove product from cart
 CREATE OR ALTER PROCEDURE remove_product_from_cart
-    @cart_id VARCHAR(255),
-    @product_id VARCHAR(255)
+    @cart_id VARCHAR(255)
 AS
 BEGIN
-    DELETE FROM cart_item WHERE cart_id = @cart_id AND product_id = @product_id;
+    DELETE FROM cart_item WHERE cart_id = @cart_id;
 END;
 GO
 

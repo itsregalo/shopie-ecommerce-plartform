@@ -19,18 +19,22 @@
         </div>
         </div>
         <div class="lower-nav">
-         <ul>
-             <li><a href="">Home</a></li>
-             <li><a href="/client/products/products.html">Products</a></li>
-         </ul>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="/client/products/products.html">Products</a></li>
+                <li><a href="">Categories</a>
+                       <ul class="dropdown-menu nav-cat-list">
+                       </ul>
+               </li>
+            </ul>
         <div class="lower-nav-left">
-         <span class="custom-input">
-             <input type="search" >
-             <img src="../assets/images/search.png" alt="search">
-         </span>
-         <a href="/client/products/cart-items.html" class="nav-cart">
-            <img src="../assets/images/cart.png" alt="Cart"> <span class="cart-count">0</span>
-        </a>
+            <span class="custom-input">
+                <input type="search" >
+                <img src="../assets/images/search.png" alt="search">
+            </span>
+            <a href="/client/products/cart-items.html" class="nav-cart">
+                <img src="../assets/images/cart.png" alt="Cart"> <span class="cart-count">0</span>
+            </a>
         </div>
         </div>
      </nav>
@@ -51,6 +55,7 @@
 
     window.addEventListener('load', ()=> {
         displayCartProducts();
+        loadAllCategories();
     })
     </script>
 </body>

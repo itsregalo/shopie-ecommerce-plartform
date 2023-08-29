@@ -22,7 +22,10 @@
          <ul>
              <li><a href="">Home</a></li>
              <li><a href="/client/products/products.html">Products</a></li>
-             <li><a href="">Categories</a></li>
+             <li><a href="">Categories</a>
+                    <ul class="dropdown-menu nav-cat-list">
+                    </ul>
+            </li>
          </ul>
         <div class="lower-nav-left">
          <span class="custom-input">
@@ -53,13 +56,9 @@
                    </div>
 
                    <div class="item-description">
-                        <p>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                            Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                            Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                            Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                            Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                            Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
+                        <p>
+
+                            
                         </p>
                    </div>
                     
@@ -77,10 +76,16 @@
         </div>
     </div>
 
+    <style>
+        
+
+    </style>
+
     <script src="/client/assets/js/dashboard.js"></script>
     <script>
         window.addEventListener('load', ()=> {
             displayProductDetails();
+            loadAllCategories();
         })
     </script>
 </body>

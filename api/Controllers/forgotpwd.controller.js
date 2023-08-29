@@ -113,14 +113,14 @@ const resetPassword = async (req, res) => {
 
         const pool = await mssql.connect(sqlConfig);
         const result = await pool.request()
-            .input('email', decodedToken.email)
+            .input('token',resetToken)
             .input('password', hashedPassword)
             .execute('resetPasswordPROC'); 
         
         if (result.rowsAffected[0] === 1) {
             return res.status(200).json({ message: 'Password reset successful' });
         } else {
-            return res.status(400).json({ error: 'Password reset failed' });
+            return res.status(400).json({ error: 'Please provide new password' });
         }
     } catch (error) {
         return res.status(500).json({ error: `Internal server error, ${error.message}` });

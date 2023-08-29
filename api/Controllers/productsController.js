@@ -44,7 +44,7 @@ const createNewCategory = async (req, res) => {
 const getAllCategories = async (req, res) => {
     try {
         const pool = await mssql.connect(sqlConfig)
-        const categories = await pool.requexst()
+        const categories = await pool.request()
                 .execute('get_all_categories')
 
         res.status(200).json({
@@ -85,8 +85,6 @@ const getCategoryById = async (req, res) => {
             })
         }
 }
-
-
 
 const getAllProducts = async (req, res) => {
     try {
@@ -269,9 +267,25 @@ const add_to_cart = async (req, res) => {
             })
         }
 
+        const product_id = id
+
         const pool = await mssql.connect(sqlConfig)
 
-        
+        // getting user id from token
+        const user = req.user
+
+        // get user by email
+        const userExists = await pool.request()
+                .input('email', mssql.VarChar, user.email)
+                .execute('fetchUserByEmailPROC')
+
+                if (!userExists.recordset[0]) {
+                    return res.status(404).json({
+                        error: 'You are not logged in'
+                    })
+                }
+
+        const user_id = userExists.recordset[0].id
 
         // checking if product exists
         const productExists = await pool.request()
@@ -287,11 +301,11 @@ const add_to_cart = async (req, res) => {
         const cart_id = v4()
 
         const cart = await pool.request()
-                .input('id', mssql.VarChar, v4())
-                .input('cart_id', mssql.VarChar, cart_id)
-                .input('product_id', mssql.VarChar, id)
-                .input('product_quantity', mssql.Int, product_quantity)
-                .execute('add_product_to_cart')
+            .input('id', mssql.VarChar, v4())
+            .input('user_id', mssql.VarChar, user_id)
+            .input('product_id', mssql.VarChar, product_id)
+            .input('quantity', mssql.Int, product_quantity)
+            .execute('add_product_to_cart')
 
         res.status(200).json({
             message: 'Product added to cart successfully',
@@ -330,8 +344,8 @@ const removeItemFromCart = async (req, res) => {
 
         // checking if product exists
         const productExists = await pool.request()
-                .input('product_id', mssql.VarChar, id)
-                .execute('get_product_by_id')
+                .input('cart_id', mssql.VarChar, id)
+                .execute('get_cart_items_by_cart_id')
 
         if (!productExists.recordset[0]) {
             return res.status(404).json({
@@ -340,7 +354,7 @@ const removeItemFromCart = async (req, res) => {
         }
 
         const cart = await pool.request()
-                .input('product_id', mssql.VarChar, id)
+                .input('cart_id', mssql.VarChar, id)
                 .execute('remove_product_from_cart')
 
         res.status(200).json({

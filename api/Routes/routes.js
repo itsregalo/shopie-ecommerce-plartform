@@ -5,15 +5,15 @@ const {
     deleteProduct, 
     add_to_cart,
     getCategoryById,
-    getCartItems} = require ('../Controllers/productsController');
+    getCartItems,
+    removeItemFromCart} = require('../Controllers/productsController');
 
 const { customeregister, login, adminregister } = require('../Controllers/Auth.controller');
 const { forgotPassword, verifytoken, resetPassword} = require('../Controllers/forgotpwd.controller');
 const productRouter = Router();
 const { verifyToken } = require('../Middleware/verifyToken');
 
-//Authentication http.get('http://localhost:5500/api/products');
-    sleep(1)
+//Authentication
 productRouter.post('/register', customeregister);
 productRouter.post('/login', login);
 productRouter.post('/adminregister', adminregister);
@@ -35,8 +35,9 @@ productRouter.post('/category', verifyToken, createNewCategory)
 productRouter.get('/category/all', getAllCategories)
 productRouter.get('/category/:id', getCategoryById);
 
-productRouter.post('/item/add-to-cart/:id', add_to_cart)
-productRouter.get('/item/get-cart-items', getCartItems)
+productRouter.post('/item/add-to-cart/:id', verifyToken, add_to_cart)
+productRouter.delete('/item/remove-from-cart/:id', verifyToken, removeItemFromCart)
+productRouter.get('/item/get-cart-items', verifyToken, getCartItems)
 
 module.exports = {
     productRouter

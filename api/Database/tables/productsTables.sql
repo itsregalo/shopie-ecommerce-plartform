@@ -15,7 +15,6 @@ BEGIN CATCH
 END CATCH;
 
 DROP TABLE IF EXISTS product;
-
 BEGIN TRY
     CREATE TABLE product (
         id VARCHAR(255) PRIMARY KEY,
@@ -27,7 +26,7 @@ BEGIN TRY
         product_image VARCHAR(255) NOT NULL,
         product_stock INT NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        -- FOREIGN KEY (product_category_id) REFERENCES product_category(id)
+        FOREIGN KEY (product_category_id) REFERENCES product_category(id)
         )
 END TRY
 BEGIN CATCH
@@ -53,12 +52,13 @@ DROP TABLE IF EXISTS cart_item;
 BEGIN TRY
     CREATE TABLE cart_item (
         id VARCHAR(255) PRIMARY KEY,
-        cart_id VARCHAR(255) NOT NULL,
+        user_id VARCHAR(255) NOT NULL,
         product_id VARCHAR(255) NOT NULL,
-        product_quantity INT NOT NULL,
+        quantity INT NOT NULL,
+        is_checked_out BIT DEFAULT 0,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        -- FOREIGN KEY (cart_id) REFERENCES cart(id),
-        -- FOREIGN KEY (product_id) REFERENCES product(id)
+        FOREIGN KEY (user_id) REFERENCES users(id),
+        FOREIGN KEY (product_id) REFERENCES product(id)
         )
 END TRY
 BEGIN CATCH
@@ -75,7 +75,7 @@ BEGIN TRY
         address VARCHAR(255) NOT NULL,
         city VARCHAR(255) NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        -- FOREIGN KEY (user_id) REFERENCES users(id)
+        FOREIGN KEY (user_id) REFERENCES users(id)
         )
 END TRY
 BEGIN CATCH
@@ -92,7 +92,7 @@ BEGIN TRY
         address VARCHAR(255) NOT NULL,
         is_completed BIT DEFAULT 0,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        -- FOREIGN KEY (user_id) REFERENCES users(id)
+        FOREIGN KEY (user_id) REFERENCES users(id)
         )
 END TRY
 BEGIN CATCH

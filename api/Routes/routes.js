@@ -25,7 +25,7 @@ productRouter.post('/verifyToken', verifyToken, verifyToken);
 productRouter.get('/', getAllProducts);
 productRouter.post('/', verifyToken, createNewProduct);
 productRouter.get('/:id', getProductById);
-productRouter.put('/:id', updateProduct);
+productRouter.put('/:id',verifyToken, updateProduct);
 productRouter.delete('/:id', verifyToken, deleteProduct);
 productRouter.get('/search/:name', getAllProducts);
 

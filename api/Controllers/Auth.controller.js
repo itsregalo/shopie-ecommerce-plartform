@@ -124,6 +124,7 @@ const adminregister = async (req, res) => {
         })
     }
 }     
+
 module.exports = {
     customeregister,
     login,

@@ -60,8 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
               removeError();
               loginSuccessMessage.textContent = responseData.message;
               // Redirect to appropriate dashboard based on user type
+              console.log(responseData.user);
               if (responseData.user.is_admin === 1) {
-                  window.location.href = '../Admin/dashboard/index.html';
+                
+                  window.location.href = '/client/Admin/dashboard/index.html';
               } else {
                   window.location.href = '../products/products.html';
               }

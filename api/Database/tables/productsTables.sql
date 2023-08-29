@@ -39,6 +39,7 @@ BEGIN TRY
     CREATE TABLE cart (
         id VARCHAR(255) PRIMARY KEY,
         user_id VARCHAR(255) NOT NULL,
+        is_completed BIT DEFAULT 0,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id)
         )

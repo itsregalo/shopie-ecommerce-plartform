@@ -120,6 +120,7 @@ nav{
   .custom-input input[type="search"] {
     padding-right: 30px; /* Provide space for the image */
   }
+
 .nav-cart{
     display: flex;
     gap: 20px;
@@ -129,6 +130,22 @@ nav{
     width: 30px;
     height: 30px;
     object-fit: contain;
+}
+
+ul .dropdown-menu {
+    display: none;
+}
+
+ul li:hover .dropdown-menu {
+    display: block;
+    /* fix not to move the other elements */
+    position: absolute;
+}
+
+.nav-cat-list li a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
 }
 
 
@@ -182,7 +199,6 @@ nav{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     padding: 15px;
     border-radius: 5px;
@@ -437,5 +453,30 @@ to {
     .upper-nav .upper-nav-left a{
         font-size: 10px;
 
+    }
+
+    .lower-nav ul{
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .lower-nav-left{
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .nav-cat-list {
+        background-color: #fff;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .nav-cat-list li a{
+        font-size: 13px;
+    }
+
+    .product-details {
+        flex-direction: column;
+        gap: 10px;
     }
 }

@@ -202,7 +202,7 @@ const displayCartProducts = async () => {
                 alt="product-1" width="200px">
             </div>
             <div class="product-info">
-                <a href="/client/products/products_details.html?id=${product.id}">
+                <a href="/client/products/products_details.html?id=${product_details.product.id}">
                     <h4>
                         ${product_details.product.product_name}
                     </h4>
@@ -337,3 +337,32 @@ function showNotification(message, type) {
     return toast;
   
   });
+
+
+const fetchAllCategories = async()=>{
+    const response = await fetch(`${base_url}/products/category/all`, {
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const data = await response.json();
+    return data;
+}
+
+const loadAllCategories = async()=>{
+    cats_nav_list = document.querySelector('.nav-cat-list');
+    const categories = await fetchAllCategories();
+    
+    categories.categories.forEach(category => {
+        const cat = document.createElement('li');
+        cat.classList.add('nav-cat-item');
+        cat.innerHTML = `
+            <a href="/client/products/products_by_category.html?id=${category.id}">
+                ${category.category_name}
+            </a>
+        `;
+        cats_nav_list.appendChild(cat);
+    }
+    );
+}

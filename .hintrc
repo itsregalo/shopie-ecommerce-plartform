@@ -6,13 +6,20 @@
     "axe/forms": [
       "default",
       {
-        "label": "off"
+        "label": "on"
       }
     ],
     "axe/name-role-value": [
       "default",
       {
-        "link-name": "off"
+        "link-name": "on",
+        "button-name": "on"
+      }
+    ],
+    "axe/text-alternatives": [
+      "default",
+      {
+        "image-alt": "on"
       }
     ]
   }

@@ -1,5 +1,6 @@
 const{forgotPassword} = require('../../Controllers/forgotpwd.controller')
 const mssql = require('mssql');
+const nodemailer = require('nodemailer');
 
 describe('forgotPwd test', () => {
     it('should fail when the request body is empty', async () => {
@@ -63,51 +64,44 @@ describe('forgotPwd test', () => {
         expect(res.json).toHaveBeenCalledWith({error: 'Email not found'})
     })
 
-        it('should send an email successfully if email exist', async () => {
-
-            const req = {
-                body: {
-                    email: 'rachaeltems@gmail.com'
-                }
-            }
-            const res = {
-                status: jest.fn().mockReturnThis(),
-                json: jest.fn()
-            }
-
-            const transporter = {
+    it('should send an email successfully if email exists', async () => {
+        const email = 'rachaeltems@gmail.com'; // Define the email
+        const resetToken = 'your-reset-token'; // Define the reset token
+    
+        const req = {
+            body: {
+                email: email,
+            },
+        };
+    
+        const res = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        };
+    
+        const transporter = {
+            sendMail: jest.fn().mockImplementationOnce((mailOptions, callback) => {
+                callback(null, true);
+            }),
+            createTransport: jest.fn().mockReturnValue({
                 sendMail: jest.fn().mockImplementationOnce((mailOptions, callback) => {
-                    callback(null, true),
-                    expect(mailOptions.from).toEqual(emailConfig.auth.user),
-                    expect(mailOptions.to).toEqual(email),
-                    expect(mailOptions.subject).toEqual('Reset Password'),
-                    expect(mailOptions.html).toEqual(`<h1>Shopie Ecommerce</h1>
-                    <h2>Copy this token to reset your password</h2>
-                           <p>${resetToken}</p>`)
+                    callback(null, true);
                 }),
-                createTransport: jest.fn().mockReturnValue({
-                    sendMail: jest.fn().mockImplementationOnce((mailOptions, callback) => {
-                        expect(mailOptions.from).toEqual(emailConfig.auth.user),
-                    expect(mailOptions.to).toEqual(email),
-                    expect(mailOptions.subject).toEqual('Reset Password'),
-                    expect(mailOptions.html).toEqual(`<h1>Shopie Ecommerce</h1>
-                    <h2>Copy this token to reset your password</h2>
-                           <p>${resetToken}</p>`)
-                    })
-                })
-            }
-            jest.spyOn(mssql, 'connect').mockResolvedValueOnce({
-                request: jest.fn().mockReturnThis(),
-                input: jest.fn().mockReturnThis(),
-                execute: jest.fn().mockResolvedValueOnce({
-                    recordset: [{
-                        email: 'rachaeltems@gmail.com'
-                    }]
-                })
-            })
-
-            await forgotPassword(req, res)
-
-            expect(res.status).toHaveBeenCalledWith(200)
-})
+            }),
+        };
+    
+        jest.spyOn(nodemailer, 'createTransport').mockReturnValue(transporter);
+        jest.spyOn(mssql, 'connect').mockResolvedValueOnce({
+            request: jest.fn().mockReturnThis(),
+            input: jest.fn().mockReturnThis(),
+            execute: jest.fn().mockResolvedValueOnce({
+                recordset: [{ email: 'rachaeltems@gmail.com' }],
+            }),
+        });
+    
+        await forgotPassword(req, res);
+    
+        expect(res.status).toHaveBeenCalledWith(200);
+       expect(res.json).toHaveBeenCalledWith({ message: 'Email sent successfully' });
+    });    
 })

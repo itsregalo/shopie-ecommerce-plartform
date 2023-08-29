@@ -5,14 +5,15 @@ const {
     deleteProduct, 
     add_to_cart,
     getCategoryById,
-    getCartItems} = require('../Controllers/productsController');
+    getCartItems} = require ('../Controllers/productsController');
 
 const { customeregister, login, adminregister } = require('../Controllers/Auth.controller');
 const { forgotPassword, verifytoken, resetPassword} = require('../Controllers/forgotpwd.controller');
 const productRouter = Router();
 const { verifyToken } = require('../Middleware/verifyToken');
 
-//Authentication
+//Authentication http.get('http://localhost:5500/api/products');
+    sleep(1)
 productRouter.post('/register', customeregister);
 productRouter.post('/login', login);
 productRouter.post('/adminregister', adminregister);

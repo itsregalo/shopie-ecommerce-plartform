@@ -1,12 +1,38 @@
 let productForm = document.querySelector("#product-form");
+let updateBtn = document.querySelector(".update-btn");
+
 let product = {
     
 };
 
+let productImageURL = '';
+
 window.onload = async() =>{
     await fetchAllProducts();
     await fetchAllCategories();
-    var deleteBtns = document.querySelectorAll('.delete-btn');
+
+    const imageFile = document.querySelector('#imageFile')
+
+    imageFile.addEventListener('change', (event)=>{
+        const target = event.target
+        const files = target.files
+        if(files){
+            const formData = new FormData()
+            formData.append("file", files[0])
+            formData.append("upload_preset", "shopie")
+            formData.append("cloud_name", "difoayyrr")
+
+            fetch('https://api.cloudinary.com/v1_1/difoayyrr/image/upload', {
+                method: "POST",
+                body: formData
+            }).then((res) => res.json()).then(res => {
+                productImageURL = res.url
+                updateBtn.style.display = "block";
+            })
+        }
+    })
+
+    let deleteBtns = document.querySelectorAll('.delete-btn');
 
     deleteBtns.forEach(deleteBtn => {
         deleteBtn.addEventListener('click', async (event) => {
@@ -36,7 +62,7 @@ window.onload = async() =>{
 
     const editBtns = document.querySelectorAll('.btn-open-modal')
     editBtns.forEach(editBtn => {
-        editBtn.addEventListener("click", async () => {
+        editBtn.addEventListener("click", async (event) => {
             document.getElementById("productModal").style.display = "block";
             const trElement = event.target.closest("tr");
             const inputElement = trElement.querySelector("input[type='hidden']");
@@ -62,16 +88,9 @@ window.onload = async() =>{
 
                 
             } catch (error) {
-        
-                // console.log(error)
-                // alerts.innerHTML = `
-                // <div class="alerts">${error.message}</div>
-                // `
-                // setTimeout(()=>{
-                //     alerts.innerHTML =''
-                // },3000)
-                
+                console.log(error);            
             }
+
             
             productForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -92,12 +111,6 @@ window.onload = async() =>{
 
                     await fetchAllProducts();
             
-                    console.log('updated');
-            
-                    //   let alerts = document.querySelector('.alerts')
-            
-                    //    let html = `<h3 > ${data?.message??'something went wrong'}</h3>`
-                    //   alerts.innerHTML = html;
                       
                     
                 } catch (error) {
@@ -109,8 +122,6 @@ window.onload = async() =>{
             });
         });
     })
-
-    
 
     // Close modal
     document.querySelector(".close-modal").addEventListener("click", function() {
@@ -124,7 +135,6 @@ const getProductDetails = () => {
     const productCategory = document.querySelector('input[name="category"]:checked').value
     const unitsInStock = document.querySelector('#unitsInStock').value
     const productPrice = document.querySelector('#productPrice').value
-    const imageFile = document.querySelector('#imageFile').value
     
        
     product = {
@@ -133,7 +143,7 @@ const getProductDetails = () => {
         product_category_id: productCategory,
         product_stock: unitsInStock,
         product_price: productPrice,
-        product_image: imageFile
+        product_image: productImageURL
     }
 }
 
@@ -161,12 +171,12 @@ const fetchAllProducts = async ()=>{
                 <input id="product_id" type="hidden" value="${product.id}">
                 <td>${index + 1}</td>
                 <td>
-                    <img src="" style="height: 100px; width: 100px; object-fit: cover;">
+                    <img src="${product.product_image}" style="height: 100px; width: 100px; object-fit: cover;">
                 </td>
                 <td>${product.product_name}</td>
                 <td>${product.product_description}</td>
                 <td class="text-center">
-                    <button type="button" class="btn-open-modal" id="edit-btn">Edit</button>
+                    <button type="button" class="btn-open-modal" id="edit-btn" data-cy="editProduct">Edit</button>
                 </td>
                 <td class="text-center">
                     <button class="delete-btn" id="delete-btn">Delete</button>
@@ -212,7 +222,7 @@ const fetchAllCategories = async ()=>{
             html += `
             <br>
             <label>
-                <input type="radio" name="category" value="${category.id}" required> ${category.category_name}
+                <input type="radio" name="category" value="${category.id}" data-cy="category" required> ${category.category_name}
             </label>
             `
         })

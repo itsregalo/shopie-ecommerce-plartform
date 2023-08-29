@@ -29,14 +29,6 @@ const fetchAllUsers = async ()=>{
         tbody.innerHTML = html
         
     } catch (error) {
-
-        // console.log(error)
-        // alerts.innerHTML = `
-        // <div class="alerts">${error.message}</div>
-        // `
-        // setTimeout(()=>{
-        //     alerts.innerHTML =''
-        // },3000)
-        
+        console.log(error)
     }
 }

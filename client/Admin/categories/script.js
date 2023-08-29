@@ -36,15 +36,7 @@ window.onload = async() =>{
 
                 
             } catch (error) {
-        
-                // console.log(error)
-                // alerts.innerHTML = `
-                // <div class="alerts">${error.message}</div>
-                // `
-                // setTimeout(()=>{
-                //     alerts.innerHTML =''
-                // },3000)
-                
+                console.log(error)           
             }
         
 
@@ -67,6 +59,32 @@ window.onload = async() =>{
                     modalContent.style.display = 'none';
                 }
             });
+
+            // TODO: Update category
+            updateCategoryForm.addEventListener('submit', async(e)=>{
+                e.preventDefault();
+            
+                let category = {
+                    category_name: document.querySelector('#newCategoryName').value,
+                }
+            
+                try {
+                    const res = await fetch(`http://localhost:8005/api/products/category/${categoryID}`,{
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(category)
+                    })
+                    const data = await res.json()
+            
+                } catch (error) {
+                    
+                }
+            
+                location.reload();
+            
+            })
         });
     });
 
@@ -75,25 +93,23 @@ window.onload = async() =>{
             const trElement = event.target.closest("tr");
             const inputElement = trElement.querySelector("input[type='hidden']");
             categoryID = inputElement.value;
-            
+
             console.log(categoryID);
-        
-            const deleteCategory = async () => {
-                try {
-                    const res = await fetch(`http://localhost:8005/api/products/category/${categoryID}`,{
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    const data = await res.json()
+            
+            // TODO: Delete category
+            try {
+                const res = await fetch(`http://localhost:8005/api/products/category/${categoryID}`,{
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const data = await res.json()
 
-                } catch (error) {
-                    
-                }
+            } catch (error) {
+                
             }
-
-            await deleteCategory();
+            
             location.reload();
         });
     });
@@ -102,8 +118,7 @@ window.onload = async() =>{
 
 const fetchAllCategories = async ()=>{
 
-    try {
-    
+    try {    
         let html =``
     
         const res = await fetch('http://localhost:8005/api/products/category/all',{
@@ -124,10 +139,10 @@ const fetchAllCategories = async ()=>{
                 <td>${index + 1}</td>
                 <td>${category.category_name}</td>
                 <td class="text-center">
-                    <button class="edit-btn" id="showModalBtn">Edit</button>
+                    <button class="edit-btn" id="showModalBtn" data-cy="editBtn">Edit</button>
                 </td>
                 <td class="text-center">
-                    <button class="delete-btn" id="delete-btn">Delete</button>
+                    <button class="delete-btn" id="delete-btn" data-cy="deleteBtn">Delete</button>
                 </td>
             </tr>
             `
@@ -136,22 +151,14 @@ const fetchAllCategories = async ()=>{
         let tbody = document.querySelector('#tbody')
         tbody.innerHTML = html
         
-    } catch (error) {
-    
-        // console.log(error)
-        // alerts.innerHTML = `
-        // <div class="alerts">${error.message}</div>
-        // `
-        // setTimeout(()=>{
-        //     alerts.innerHTML =''
-        // },3000)
-        
+    } catch (error) {   
+        console.log(error)     
     }
 }
 
+// TODO: Fetch category name input and store in a category object
 const getCategoryDetails = () => {
-    const categoryName = document.querySelector('#categoryName').value
-    
+    const categoryName = document.querySelector('#categoryName').value   
        
     category = {
         category_name: categoryName
@@ -159,6 +166,7 @@ const getCategoryDetails = () => {
 }
 
 
+// TODO: Add category
 categoryForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     getCategoryDetails();
@@ -174,49 +182,35 @@ categoryForm.addEventListener('submit', async (e) => {
             body: JSON.stringify(category)
         })
 
-        console.log('saved');
-
         const data = await res.json()
 
-        //   let alerts = document.querySelector('.alerts')
+        let alerts = document.querySelector('.alerts')
+        if(data.message) {
+            alerts.innerHTML = `
+                <div style="color: rgb(5, 203, 5);">${data.message}</div>
+            `;
 
-        //    let html = `<h3 > ${data?.message??'something went wrong'}</h3>`
-        //   alerts.innerHTML = html;
-          
+        }
+
+        else if(data.error) {
+            alerts.innerHTML = `
+                <div style="color: red;">${data.error}</div>
+            `;
+        }
         
+        setTimeout(()=>{
+            alerts.innerHTML = '';
+            location.reload();
+        }, 2000)
+              
     } catch (error) {
-        console.log(error)
-        
+        console.log(error)        
     }
 
-    location.reload();
 
 });
 
-updateCategoryForm.addEventListener('submit', async(e)=>{
-    e.preventDefault();
 
-    let category = {
-        category_name: document.querySelector('#newCategoryName').value,
-    }
-
-    try {
-        const res = await fetch(`http://localhost:8005/api/products/category/${categoryID}`,{
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(category)
-        })
-        const data = await res.json()
-
-    } catch (error) {
-        
-    }
-
-    location.reload();
-
-})
 
 
 

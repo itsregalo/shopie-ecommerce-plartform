@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">   
+    <link href="../styles.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Product List</title>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="logo">
+                <img src="../icon/logo.png" alt="">
+            </div>
+            <div class="user">
+                <img class="" src="../icon/prof.png" width="120">
+                <h5> Anthony Kigotho</h5>
+                <p> anthonykigotho9@gmail.com</p>
+            </div>
+            <div class="sidebar-heading">Management</div>
+            <div class="">
+                <a href="../dashboard/index.html" class="sidebar-item"><span><img src="../icon/home.png" alt="" style="width: 24px"></span> Dashboard</a>
+                <div class="">
+                    <div class="">
+                        <a class="sidebar-item" type="button"><span><img src="../icon/products.png" alt="" style="width: 24px;"></span> Products</a>
+                        <div class="" id="products">
+                            <a href="../addProduct/add_product.html" class=""> Add Product</a>
+                            <a href="../productList/product_list.html" class=""> Product List</a>
+                            <a href="./categories.html" class=""> Categories</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="../customers/customers.html" class="sidebar-item"><span><img src="../icon/customers.png" alt="" style="width: 24px;"></span> Customers</a>
+            </div>
+            <div class="sidebar-heading">Settings </div>
+            <div id="settings-container">
+                <a href="../profile/profile.html" class=" "><span><img src="../icon/usericon.png" alt="" style="width: 24px;"></span> Profile</a>
+                <a href="" class=" "><span><img src="../icon/power.png" alt="" style="width: 24px;"></span> Logout</a>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="">
+
+
+                <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
+                    <span> <img src="../icon/menu.png" alt=""></span>
+                </button>
+
+            </nav>
+
+            <div class="container">
+                <h1 style="text-align: center; margin-top: 0;">Categories</h1>
+                <hr>
+                <div class="alerts" style="text-align: center;  position: sticky; top: 20px;">
+                    <!-- <div style="color: rgb(5, 203, 5);">Project added successfully</div> -->
+                </div>
+                <div class="category-container">
+                    <div style="width: 30rem;">
+                        <form id="category-form">
+                            <div class="info-item">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="categoryName" class="">Category name</label>
+                                        <input type="text" class="form-control" id="categoryName" name="categoryName" value="" data-cy="categoryName">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <input class="add-btn" type="submit" name="save" value="ADD CATEGORY" data-cy="add-category">
+                        </form>
+                    </div>
+                        <table style=" width: 45rem;">
+                            <thead>
+                                <tr>
+                                    <th> #</th>
+                                    <th> Category Name</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                <tr>
+                                     <td>1</td>
+                                     <td>Category name</td>
+                                     <td class="text-center">
+                                         <button id="edit-btn">Edit</button>
+                                     </td>
+                                     <td class="text-center">
+                                         <a href="" id="delete-btn">Delete</a>
+                                     </td>
+                                 </tr>
+                            </tbody>
+                        </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Backdrop -->
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+
+    <!-- Modal Content -->
+    <div class="modal-content" id="modalContent">
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+        <form id="update-category-form">
+            <div class="info-item">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="categoryName">Category name</label>
+                        <input type="text" class="form-control" id="newCategoryName" value="" data-cy="newCategoryName" required>
+                    </div>
+                </div>
+            </div>
+            <input class="add-btn" type="submit" name="save" value="UPDATE CATEGORY" data-cy="updateCategory">
+        </form>
+    </div>
+
+
+    <script src="../script.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

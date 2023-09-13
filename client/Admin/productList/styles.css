@@ -1,0 +1,136 @@
+#page-content-wrapper {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.products-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#edit-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    text-decoration: none;
+}
+
+#delete-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    color: #fff;
+    text-decoration: none;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+
+/* Button to open the modal */
+.btn-open-modal {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Modal container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+}
+
+/* Modal content */
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    max-width: 40%; /* Adjust the width as needed */
+    margin: auto;
+    margin-top: 1%;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Close button */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Info section */
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-title {
+    margin: 0;
+    font-size: 15px;
+}
+
+.form-group {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Add button */
+.update-btn {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #007bff;
+}
+
+    

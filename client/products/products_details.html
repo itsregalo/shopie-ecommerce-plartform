@@ -3,51 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/client/assets/style.css">
+    <link rel="stylesheet" href="/client/assets/css/style.css">
     <title>Shopie</title>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="top-bar">
-                <div class="left-top">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="/client/assets/images/logo.png" alt="logo" width="200px">
-                        </a>
-                    </div>
-                </div>
-                <div class="right-top">
-                    <a href="">Log In</a>
-                    <a href="">Sign Up</a>
-                </div>
-            </div>
-            <div class="lower-bar">
-                <div class="lower-bar-left">
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Discover</a></li>
-                        <li><a href="">Products</a></li>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="lower-bar-right">
-                    <form action="">
-                        <input type="text" placeholder="Search">
-                        <button type="submit">Search</button>
-                    </form>
-
-                    <div class="cart">
-                        <a href="">
-                            <img src="/client/assets/images/cart.png" alt="cart" width="30px">
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <nav>
+        <div class="upper-nav">
+         <span class="nav-logo"><img src="../assets/images/logo.png" alt="logo"></span>
+        <div class="upper-nav-left">
+         <span class="nav-acc">
+             <img src="../assets/images/accIcon.png" alt="profile">
+             <a href="../Auth/profile.html">Account</a>
+         </span>
+         <a href="../products/index.html">Log Out</a>
         </div>
-
+        </div>
+        <div class="lower-nav">
+         <ul>
+             <li><a href="">Home</a></li>
+             <li><a href="/client/products/products.html">Products</a></li>
+             <li><a href="">Categories</a>
+                    <ul class="dropdown-menu nav-cat-list">
+                    </ul>
+            </li>
+         </ul>
+        <div class="lower-nav-left">
+         <span class="custom-input">
+             <input type="search" >
+             <img src="../assets/images/search.png" alt="search">
+         </span>
+         <a href="" class="nav-cart"><img src="../assets/images/cart.png" alt="Cart"></a>
+        </div>
+        </div>
+     </nav>
+    <div class="container">
         <div class="main-body">
             <div class="product-details">
                 <div class="product-img">
@@ -67,14 +56,10 @@
                    </div>
 
                    <div class="item-description">
-                    <p>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                        Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                        Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                        Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                        Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                        Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. 
-                    </p>
+                        <p>
+
+                            
+                        </p>
                    </div>
                     
                     <div class="product-quantity">
@@ -90,5 +75,18 @@
             </div>
         </div>
     </div>
+
+    <style>
+        
+
+    </style>
+
+    <script src="/client/assets/js/dashboard.js"></script>
+    <script>
+        window.addEventListener('load', ()=> {
+            displayProductDetails();
+            loadAllCategories();
+        })
+    </script>
 </body>
 </html>

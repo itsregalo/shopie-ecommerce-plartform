@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="../styles.css" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet">
+  <title>SHOPIE - Admin Panel</title>
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <div class="logo">
+          <img src="../icon/logo.png" alt="">
+      </div>
+        <div class="user">
+            <img class="" src="../icon/prof.png" width="120">
+            <h5> Anthony Kigotho</h5>
+            <p> anthonykigotho9@gmail.com</p>
+        </div>
+        <div class="sidebar-heading">Management</div>
+        <div class="">
+            <a href="index.html" class="sidebar-item"><span><img src="../icon/home.png" alt="" style="width: 24px;"></span> Dashboard</a>
+            <div class="">
+                <div class="">
+                    <a class="sidebar-item" type="button"><span><img src="../icon/products.png" alt="" style="width: 24px"></span> Products</a>
+                    <div class="" id="products">
+                        <a href="../addProduct/add_product.html" class=""> Add Product</a>
+                        <a href="../productList/product_list.html" class=""> Product List</a>
+                        <a href="../categories/categories.html" class=""> Categories</a>
+                    </div>
+                </div>
+            </div>
+            <a href="../customers/customers.html" class="sidebar-item"><span><img src="../icon/customers.png" alt="" style="width: 24px;"></span> Customers</a>
+        </div>
+        <div class="sidebar-heading">Settings </div>
+        <div id="settings-container">
+            <a href="../profile/profile.html" class=" "><span><img src="../icon/usericon.png" alt="" style="width: 24px;"></span> Profile</a>
+            <a href="" class=" "><span><img src="../icon/power.png" alt="" style="width: 24px;"></span> Logout</a>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="">
+        <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
+          <span> <img src="../icon/menu.png" alt=""></span>
+        </button>
+      </nav>
+
+      <div class="container">
+        <h1>Dashboard</h1>
+        <div class="card">
+          <div class="card-row">
+            <div class=""><img src="../icon/greed.png" alt="" width="80px"></div>
+            <div class="">
+              <h5 style="font-weight: bold; font-size: 20px;">Total Products</h5>
+              <p style="font-weight: bold; font-size: 20px;" id="products-count">23 </p>
+            </div>
+          </div>
+                  
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="../script.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>

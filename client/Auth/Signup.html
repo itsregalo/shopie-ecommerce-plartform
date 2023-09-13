@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/Auth.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Shopie Signup</title>
+</head>
+<body>
+    <main>
+        <div class="signup-container">
+            <section class="signup-left">
+                <h1>Already have an account?</h1>
+                <p>Shop with confidence, supported by our 100% satisfaction guarantee</p>
+                <a href="../Auth/login.html">Sign In</a>
+            </section>
+            <section class="signup-right">
+                <span class="signup-logo"><img src="../assets/images/logo.png" alt="logo">
+                <a href="../products/index.html">Home</a>
+                </span>
+               <div class="signup-details">
+                <h1>CREATE NEW ACCOUNT</h1>
+                <div class="error-message" id="registerErrorMessage"></div>
+                <div class="success-message" id="registerSuccessMessage"></div>
+                <form id="registerForm">
+                    <input type="text" id="firstName" placeholder="First Name">
+                    <input type="text" id="lastName" placeholder="Last Name">
+                    <input type="text" id="email" placeholder="Email">
+                    <input type="password" id="password" placeholder="Password">
+                    <input type="password" id="confirmPassword" placeholder="Re-enter Password">
+                    <button type="submit">Sign Up</button>
+                </form>
+               </div>
+            </section>
+        </div>
+    </main>
+    <script src="../assets/js/register.js"></script>
+</body>
+</html>

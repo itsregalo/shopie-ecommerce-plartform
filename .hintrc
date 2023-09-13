@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/forms": [
+      "default",
+      {
+        "label": "on"
+      }
+    ],
+    "axe/name-role-value": [
+      "default",
+      {
+        "link-name": "on",
+        "button-name": "on"
+      }
+    ],
+    "axe/text-alternatives": [
+      "default",
+      {
+        "image-alt": "on"
+      }
+    ]
+  }
+}

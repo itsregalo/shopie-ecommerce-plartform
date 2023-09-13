@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Profile</title>
+
+    <!-- Custom styles for this template -->
+    <link href="../styles.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="logo">
+                <img src="../icon/logo.png" alt="">
+            </div>
+            <div class="user">
+                <img class="" src="../icon/prof.png" width="120">
+                <h5> Anthony Kigotho</h5>
+                <p> anthonykigotho9@gmail.com</p>
+            </div>
+            <div class="sidebar-heading">Management</div>
+            <div class="">
+                <a href="../dashboard/index.html" class="sidebar-item"><span><img src="../icon/home.png" alt="" style="width: 24px"></span> Dashboard</a>
+                <div class="">
+                    <div class="">
+                        <a class="sidebar-item" type="button"><span><img src="../icon/products.png" alt="" style="width: 24px;"></span> Products</a>
+                        <div class="" id="products">
+                            <a href="../addProduct/add_product.html" class=""> Add Product</a>
+                            <a href="../productList/product_list.html" class=""> Product List</a>
+                            <a href="../categories/categories.html" class=""> Categories</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="../customers/customers.html" class="sidebar-item"><span><img src="../icon/customers.png" alt="" style="width: 24px;"></span> Customers</a>
+            </div>
+            <div class="sidebar-heading">Settings </div>
+            <div id="settings-container">
+                <a href="../profile/profile.html" class=" "><span><img src="../icon/usericon.png" alt="" style="width: 24px;"></span> Profile</a>
+                <a href="" class=" "><span><img src="../icon/power.png" alt="" style="width: 24px;"></span> Logout</a>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
+
+
+                <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
+                    <span> <img src="../icon/menu.png" alt=""></span>
+                </button>
+
+            </nav>
+
+            <div class="container">
+                <div class="profile-container" style="margin:0; width: 30rem;">
+                    <h1 style="text-align: center; margin-top: 0;">Update Profile</h1>
+                    <hr>
+                    <div style="text-align: center;">
+                        <img src="../icon/prof.png" class="" width="120" alt="Profile Picture">
+                    </div>
+
+                    <form class="form" action="" id="registrationForm">
+
+                        <div class="form-group">
+                            <label for="first_name">
+                                First name
+                            </label>
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" value="">
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="last_name">
+                                Last name
+                            </label>
+                            <input type="text" class="form-control" name="last_name" id="last_name" value="" placeholder="Last Name">
+                        </div>
+                    
+
+                        <div class="form-group">
+                            <label for="email">
+                                Email
+                            </label>
+                            <input type="email" class="form-control" name="email" id="email" value="anthonykigotho9@gmail.com" style="background: gainsboro;" disabled>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <br>
+                                <button name="save" type="submit" id="save-btn">Save Changes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

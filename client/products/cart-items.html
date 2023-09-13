@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/client/assets/css/style.css">
+    <title>Shopie</title>
+</head>
+<body>
+    <nav>
+        <div class="upper-nav">
+         <span class="nav-logo"><img src="../assets/images/logo.png" alt="logo"></span>
+        <div class="upper-nav-left">
+         <span class="nav-acc">
+             <img src="../assets/images/accIcon.png" alt="profile">
+             <a href="../Auth/profile.html">Account</a>
+         </span>
+         <a href="">Log Out</a>
+        </div>
+        </div>
+        <div class="lower-nav">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="/client/products/products.html">Products</a></li>
+                <li><a href="">Categories</a>
+                       <ul class="dropdown-menu nav-cat-list">
+                       </ul>
+               </li>
+            </ul>
+        <div class="lower-nav-left">
+            <span class="custom-input">
+                <input type="search" >
+                <img src="../assets/images/search.png" alt="search">
+            </span>
+            <a href="/client/products/cart-items.html" class="nav-cart">
+                <img src="../assets/images/cart.png" alt="Cart"> <span class="cart-count">0</span>
+            </a>
+        </div>
+        </div>
+     </nav>
+    <div class="container">
+        <div class="main-body">
+            <div class="header-name">
+                <h2>Your Cart Items</h2>
+            </div>
+            <div class="products">
+
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="/client/assets/js/dashboard.js"></script>
+    <script>
+
+    window.addEventListener('load', ()=> {
+        displayCartProducts();
+        loadAllCategories();
+    })
+    </script>
+</body>
+</html>

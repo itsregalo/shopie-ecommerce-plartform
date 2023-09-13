@@ -1,0 +1,31 @@
+### USER REGISTRATION
+POST http://localhost:8005/users/register
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "firstName": "Jenna",
+    "lastName": "Doney",
+    "email": "jenna@gmail.com",
+    "password" : "12345678"
+}
+
+### LOGIN
+POST http://localhost:8005/users/login
+Content-Type: application/json
+
+{
+    "email": "jenna@gmail.com",
+    "password" : "12345678"
+}
+
+### verify-token
+POST http://localhost:8005/users/verify-token
+Content-Type: application/json
+
+{
+    "email": "rachael@gmail.com",
+    "token" :""
+}
+
+
